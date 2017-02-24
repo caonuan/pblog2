@@ -1,0 +1,69 @@
+<!--暂时不写了，直接套用模板-->
+
+*, *::after, *::before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.6rem;
+	font-family: "Open Sans", sans-serif;
+	color: #2c343b;
+	background-color: #f2f2f2;
+}
+
+a {
+	color: #d44457;
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+.panacea-navbar {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top:10px;
+	background: none;
+	z-index: 2;
+	text-align: center;
+}
+.panacea-navbar nav{
+	display: inline-block;
+	position:relative;
+}
+
+ a {
+	color: #7a7a7a;
+	text-shadow: 0 0 1px rgba(111,134,134,0.3);
+}
+
+ a::before {
+	color: #400040;
+	content: attr(data-hover);
+	position: absolute;
+	opacity: 0;
+	text-shadow: 0 0 1px rgba(255,255,255,0.3);
+	-webkit-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+	-moz-transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+	transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+	pointer-events: none;
+}
+
+ a:hover::before,
+ a:focus::before {
+	-webkit-transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+	-moz-transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+	transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+	opacity: 1;
+}

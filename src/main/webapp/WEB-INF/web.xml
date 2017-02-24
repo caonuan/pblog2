@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
+	<filter>
+		<filter-name>struts2</filter-name>
+		<!-- <filter-class>> pblog.util.CKFilter</filter-class> -->
+		<filter-class>pblog.util.FCKFilter</filter-class>
+		<!-- <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class> -->
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>struts-default.xml,struts-plugin.xml,struts.xml</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- <filter> <filter-name>FCKFilter</filter-name> <filter-class>pblog.util.FCKFilter</filter-class> 
+		</filter> <filter-mapping> <filter-name>FCKFilter</filter-name> <url-pattern>/*</url-pattern> 
+		</filter-mapping> -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:beans.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+	<!--
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	 <servlet> <servlet-name>ConnectorServlet</servlet-name> <servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class> 
+		<init-param> <description> Path to configuration file can be relative path 
+		inside application, absolute path on local file system or UNC path. </description> 
+		<param-name>XMLConfig</param-name> <param-value>/WEB-INF/config.xml</param-value> 
+		</init-param> <init-param> <param-name>debug</param-name> <param-value>false</param-value> 
+		</init-param> <load-on-startup>1</load-on-startup> </servlet> <servlet-mapping> 
+		<servlet-name>ConnectorServlet</servlet-name> <url-pattern> /ckfinder/core/connector/java/connector.java 
+		</url-pattern> </servlet-mapping> <session-config> <session-timeout>10</session-timeout> 
+		</session-config> -->
+	<!-- =================ckeditor+ckfinder图片上传功能的配置=================== -->
+	<servlet>
+		<!-- servlet的命 名===注册名称，这个名称可以任意的 -->
+		<servlet-name>ConnectorServlet</servlet-name>
+		<!-- servlet 所在包 -->
+		<servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>
+		<init-param>
+			<!-- 初始化设置 -->
+			<param-name>XMLConfig</param-name>
+			<param-value>/WEB-INF/config.xml</param-value>
+		</init-param>
+		<init-param>
+			<!-- 设置是否可以查看debug，在正常时候需要设置为false. -->
+			<param-name>debug</param-name>
+			<param-value>false</param-value>
+		</init-param>
+
+		<!-- load-on-startup 元素在web应用启动的时候指定了 servlet被加载的顺序，它的值必须是一个整数。 如果它的值是一个负整数或是这个元素不存在， 
+			那么容器会在该servlet被调用的时候，加载这个servlet。 如果值是正整数或零，容器在配置的时候就加载并初始化这个servlet，容器必须保证值小的先被加载。 
+			如果值相等，容器可以自动选择先加载谁。 在此不是必须的 -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- 映射的相对路径，主要是在其他地方使用，比如js,页面访问 -->
+	<servlet-mapping>
+		<servlet-name>ConnectorServlet</servlet-name>
+		<url-pattern>  
+            /ckfinder/core/connector/java/connector.java  
+        </url-pattern>
+	</servlet-mapping>
+	<!-- =================ckeditor+ckfinder图片上传功能的配置结束=================== -->
+
+</web-app>

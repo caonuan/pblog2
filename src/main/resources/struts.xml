@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.objectFactory.spring.autoWire" value="type" />
+	<constant name="struts.action.excludePattern" value="/ckeditor/.*,/ckfinder/.*" />
+	<constant name="struts.multipart.maxSize" value="524288000" />
+
+	<package name="manager" namespace="/manager" extends="struts-default">
+		<interceptors>
+			<interceptor name="managerLoginInterceptor" class="pblog.util.ManagerLoginInterceptor"></interceptor>
+			<interceptor-stack name="managerInterceptors">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="managerLoginInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-action-ref name="default"></default-action-ref>
+		<global-results>
+			<result name="login">login.jsp</result>
+		</global-results>
+		<action name="default" class="com.opensymphony.xwork2.ActionSupport">
+			<result>/404.jsp</result>
+		</action>
+		<action name="login" class="pblog.action.ManagerMainAction">
+			<result name="already">main.jsp</result>
+		</action>
+		<action name="managerlogin" class="pblog.action.ManagerAction">
+			<result>main.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<!-- manageArticle manageAlbum manageNote -->
+		<action name="manage*" class="pblog.action.ManageSelectAction"
+			method="manage{1}">
+			<result>/manager/manage{1}.jsp</result>
+			<interceptor-ref name="managerLoginInterceptor"></interceptor-ref>
+		</action>
+		<action name="showPhotoForAlbum" class="pblog.action.ShowPhotoForAlbumAction">
+			<result>/manager/showPhotoForAlbum.jsp</result>
+		</action>
+		<action name="addPhoto" class="pblog.action.ManagePhotoAction"
+			method="addPhoto">
+			<result>addPhoto.jsp</result>
+		</action>
+		<action name="addPhotoResult" class="pblog.action.ManagePhotoAction"
+			method="addPhotoResult">
+			<result>/manager/showAddPhotoResult.jsp</result>
+		</action>
+		<action name="deletePhoto" class="pblog.action.ManagePhotoAction"
+			method="deletePhoto">
+			<result type="redirectAction">
+				<param name="actionName">/manager/showPhotoForAlbum</param>
+				<param name="albumId">${albumId}</param>
+			</result>
+		</action>
+		<action name="sqlQuery" class="pblog.action.QueryDatabaseAction"
+			method="query">
+			<result type="redirectAction">sqlQuery</result>
+		</action>
+	</package>
+
+	<package name="editor" namespace="/" extends="struts-default">
+		<action name="addArticleResult" class="pblog.action.EditorArticleResultAction"
+			method="addArticle">
+			<result>/cksource/success.jsp</result>
+		</action>
+		<action name="editorArticleResult" class="pblog.action.EditorArticleResultAction"
+			method="editorArticle">
+			<result>/cksource/success.jsp</result>
+		</action>
+		<action name="createArticle" class="pblog.action.EditorArticleAction"
+			method="createArticle">
+			<result>/createblogeditor.jsp</result>
+		</action>
+		<action name="updateArticle" class="pblog.action.EditorArticleAction"
+			method="updateArticle">
+			<result>/blogeditor.jsp</result>
+		</action>
+		<action name="deleteArticle" class="pblog.action.EditorArticleResultAction"
+			method="deleteArticle">
+			<result>/cksource/success.jsp</result>
+		</action>
+		<action name="createAlbum" class="pblog.action.ManageAlbumAction"
+			method="createAlbum">
+			<result>/cksource/success.jsp</result>
+		</action>
+		<action name="updateAlbum" class="pblog.action.ManageAlbumAction"
+			method="updateAlbum">
+			<result>/cksource/success.jsp</result>
+		</action>
+		<action name="deleteAlbum" class="pblog.action.ManageAlbumAction"
+			method="deleteAlbum">
+			<result>/cksource/success.jsp</result>
+		</action>
+	</package>
+
+	<package name="article" namespace="/article" extends="struts-default">
+		<interceptors>
+			<interceptor name="visitorLoginInterceptor" class="pblog.util.VisitorLoginInterceptor"></interceptor>
+			<interceptor-stack name="visitorInterceptors">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="visitorLoginInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="visitorInterceptors"></default-interceptor-ref>
+		<default-action-ref name="default"></default-action-ref>
+		<action name="default" class="com.opensymphony.xwork2.ActionSupport">
+			<result>/404.jsp</result>
+		</action>
+		<action name="viewArticle" class="pblog.action.ViewArticleAction">
+			<result>/article/viewarticle.jsp</result>
+		</action>
+		<action name="showArticle" class="pblog.action.ShowArticleAction">
+			<interceptor-ref name="visitorInterceptors"></interceptor-ref>
+			<result>/article/showarticle.jsp</result>
+		</action>
+		<action name="addArticleReply" class="pblog.action.AddArticleReplyAction">
+			<result type="redirectAction">
+				<param name="actionName">showArticle</param>
+				<param name="articleId">${articleId}</param>
+			</result>
+		</action>
+		<action name="searchArticle" class="pblog.action.ViewArticleAction" method="searchArticle">
+			<result>/article/viewarticle.jsp</result>
+		</action>
+		<action name="viewArticleByBlogClass" class="pblog.action.ViewArticleAction" method="viewArticleByBlogClass">
+			<result>/article/viewarticle.jsp</result>
+		</action>
+		<action name="viewArticleByTime" class="pblog.action.ViewArticleAction" method="viewArticleByTime">
+			<result>/article/viewarticle.jsp</result>
+		</action>
+	</package>
+
+	<package name="default" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="visitorLoginInterceptor" class="pblog.util.VisitorLoginInterceptor"></interceptor>
+			<interceptor-stack name="visitorInterceptors">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="visitorLoginInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="visitorLoginInterceptor"></default-interceptor-ref>
+		<default-action-ref name="articleHome"></default-action-ref>
+		<!-- <action name="*_*" class="pblog.action.{1}_Action" method="{2}"> <result>/index2.jsp</result> 
+			</action> -->
+		<action name="home" class="pblog.action.HomeAction">
+			<interceptor-ref name="visitorInterceptors"></interceptor-ref>
+			<result>/homePage.jsp</result>
+		</action>
+		<action name="articleHome" class="pblog.action.HomeAction">
+			<result type="redirectAction">
+				<param name="namespace">/article</param>
+				<param name="actionName">viewArticle</param>
+				<param name="pageNow">1</param>
+			</result>
+		</action>
+	</package>
+
+	<package name="note" namespace="/note" extends="struts-default">
+		<action name="addNote" class="pblog.action.NoteAction" method="addNote">
+			<result type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">home</param>
+			</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,14 @@
+关于未实现的功能：
+photoserviceimpl,getsmallphoto
+
+
+有错误的功能：
+ManagerServiceImpl,login：properties文件路径不对
+
+
+
+
+
+
+待测试
+photoserviceimpl,createAlbum：创建文件夹

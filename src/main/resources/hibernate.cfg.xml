@@ -1,0 +1,44 @@
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- 配置数据库连接信息 
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/pblog</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">admin</property>
+		-->
+		<!-- 数据库方言 -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- if show the sql statement -->
+		<property name="show_sql">false</property>
+		<!-- format the sql statement -->
+		<property name="format_sql">true</property>
+		<!-- select the update mode of database
+			create：drop the table before use,and create a new table,
+			update:create a table if this table not exist,and then manipulate,
+			validate:make a detection,
+			create-drop:drop the table when you closed the SessionFactory entity.-->
+		<property name="hbm2ddl.auto">update</property>
+		
+		<mapping class="pblog.entity.Album"/>
+		<mapping class="pblog.entity.AlbumReply"/>
+		<mapping class="pblog.entity.Article"/>
+		<mapping class="pblog.entity.ArticleReply"/>
+		<mapping class="pblog.entity.BlogClass"/>
+		<mapping class="pblog.entity.Note"/>
+		<mapping class="pblog.entity.Photo"/>
+		<mapping class="pblog.entity.Statistics"/>
+		<mapping class="pblog.entity.Visitor"/>
+		<mapping class="pblog.entity.Visit"/>
+		<mapping class="pblog.entity.IPInfo"/>
+	</session-factory>
+</hibernate-configuration>
