@@ -66,6 +66,9 @@
 					<p>
 						Email: <a href="mailto:caonuan@hotmail.com">caonuan@hotmail.com</a>
 					</p>
+					<p>
+						Github: <a href="https://github.com/caonuan/pblog2" target="_blank">github@caonuan/pblog2</a>
+					</p>
 				</div>
 				<div class="col-md-3 amet-sed ">
 					<h4>分享这篇文章：</h4>
