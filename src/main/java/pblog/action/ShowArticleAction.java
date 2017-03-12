@@ -59,8 +59,8 @@ public class ShowArticleAction extends ActionSupport implements ServletRequestAw
 		blogClassList = articleService.getAllBlogClass();
 		timeList = articleService.getAllMonthsWhichHaveArticle();
 		visitor = (Visitor) session.getAttribute("visitor");
-		// 对所有的<img>标签进行处理，将路径变为绝对路径，加上style=max-width:100% 属性
 		String content = article.getContent();
+		// 对所有的<img>标签进行处理，将路径变为绝对路径，加上style=max-width:100% 属性
 		int searchIndex = 0;
 		do {
 			searchIndex = content.indexOf("<img", searchIndex);
@@ -68,6 +68,16 @@ public class ShowArticleAction extends ActionSupport implements ServletRequestAw
 				content = content.substring(0, searchIndex + 4)
 						+ " style=\"max-width:100%;\""
 						+ content.substring(searchIndex + 4, content.length());
+			searchIndex += 1;
+		} while (searchIndex != 0);
+		// 对所有的<a>标签进行处理，加上target="_blank"属性
+		searchIndex=0;
+		do {
+			searchIndex = content.indexOf("<a", searchIndex);
+			if (searchIndex != -1)
+				content = content.substring(0, searchIndex + 2)
+						+ " target=\"_blank\""
+						+ content.substring(searchIndex + 2, content.length());
 			searchIndex += 1;
 		} while (searchIndex != 0);
 		content=content.replaceAll("pblog/userfiles",basicUrl+"/pblog/userfiles");
