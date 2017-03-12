@@ -1,1 +1,7 @@
-Unexpected error.  File contents could not be restored from local history during undo/redo.
+.article-content a:link,a:visited{
+	color:#31708f;
+}
+.article-content a:hover, a:focus {
+    color: #E74C3C;
+    text-decoration: underline;
+}
