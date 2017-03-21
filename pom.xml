@@ -45,6 +45,13 @@
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-core</artifactId>
 			<version>2.3.29</version>
+			<!-- 解决javassist包冲突的问题，struts和hibernate都会有这个包 -->
+			<exclusions>
+				<exclusion>
+					<artifactId>javassist</artifactId>
+					<groupId>javassist</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
@@ -156,11 +163,11 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.htmlparser/htmlparser -->
 		<dependency>
-		    <groupId>org.htmlparser</groupId>
-		    <artifactId>htmlparser</artifactId>
-		    <version>2.1</version>
+			<groupId>org.htmlparser</groupId>
+			<artifactId>htmlparser</artifactId>
+			<version>2.1</version>
 		</dependency>
-				
+
 
 
 
