@@ -146,15 +146,17 @@ public class ArticleDAOImpl implements ArticleDAO {
 
 	@Override
 	public List<Article> getAritleByClassAndPage(final int blogClassId,
-			final int page) {
+			final int page,final boolean ifShowHidden) {
 		@SuppressWarnings("unchecked")
 		List<Article> list = (List<Article>) hibernateTemplate
 				.execute(new HibernateCallback<Object>() {
 					@Override
 					public Object doInHibernate(Session session)
 							throws HibernateException {
+						if(!ifShowHidden)
+							session.enableFilter("hiddenFilter");
 						Query query = session
-								.createQuery("from Article where blogClassId =? and hidden!=1")
+								.createQuery("from Article where blogClassId =? order by publishDate desc")
 								.setParameter(0, blogClassId);
 						query.setMaxResults(10);
 						query.setFirstResult((page - 1) * 10);
@@ -165,9 +167,14 @@ public class ArticleDAOImpl implements ArticleDAO {
 	}
 
 	@Override
-	public int getPageCountForClass(int blogClassId) {
+	public int getPageCountForClass(int blogClassId,boolean ifShowHidden) {
+		String sql;
+		if(ifShowHidden)
+			sql="select count(articleId) from pblog.entity.Article where blogClassId = ?";
+		else
+			sql="select count(articleId) from pblog.entity.Article where blogClassId = ? and hidden!=1";
 		Long n = (Long) hibernateTemplate
-				.find("select count(articleId) from pblog.entity.Article where blogClassId = ? and hidden!=1",
+				.find(sql,
 						blogClassId)
 				.get(0);
 		return n.intValue();

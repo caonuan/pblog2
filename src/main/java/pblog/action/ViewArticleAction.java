@@ -3,7 +3,9 @@ package pblog.action;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -22,7 +24,7 @@ import pblog.util.HtmlParser;
  */
 @Controller
 @Scope("prototype")
-public class ViewArticleAction extends ActionSupport {
+public class ViewArticleAction extends ActionSupport{
 
 	private static final long serialVersionUID = 6431374288194075322L;
 	private int pageNow;
@@ -35,9 +37,15 @@ public class ViewArticleAction extends ActionSupport {
 	private int blogClassId;
 	private List<Object[]> timeList;
 	private String time;
+	//当前访问的路径与参数。用于翻页链接用
+	private String url;
+	private String params;
 
 	@Override
 	public String execute() throws Exception {
+		//获取当前访问的url路径，并去掉前面的/pblog
+		url=ServletActionContext.getRequest().getRequestURI();
+		url=url.substring(7);
 		pageCount = articleService.getPageCount(10);
 		articleList=articleService.getTopPostedArticle();
 		articleList.addAll( articleService.getSomeArticle(pageNow,10,-1));
@@ -51,6 +59,9 @@ public class ViewArticleAction extends ActionSupport {
 	}
 
 	public String searchArticle() {
+		//获取当前访问的url路径，并去掉前面的/pblog
+		url=ServletActionContext.getRequest().getRequestURI();
+		url=url.substring(7);
 		pageCount = searchService.getArticleCountByKeyWord(keyWord);
 		articleList = searchService.getArticleByKeyWord(keyWord, pageNow);
 		for (Article article : articleList) {
@@ -63,8 +74,16 @@ public class ViewArticleAction extends ActionSupport {
 	}
 
 	public String viewArticleByBlogClass() {
-		pageCount = articleService.getPageCountForClass(blogClassId);
-		articleList = articleService.getAritleByClassAndPage(blogClassId, pageNow);
+		//获取当前访问的url路径，并去掉前面的/pblog
+		HttpServletRequest request= ServletActionContext.getRequest();
+		url=request.getRequestURI();
+		params="&blogClassId="+blogClassId;
+		url=url.substring(7);
+		boolean ifShowHidden=false;
+		if(ServletActionContext.getRequest().getSession().getAttribute("manager")!=null)
+			ifShowHidden=true;
+		pageCount = articleService.getPageCountForClass(blogClassId,ifShowHidden);
+		articleList = articleService.getAritleByClassAndPage(blogClassId, pageNow,ifShowHidden);
 		for (Article article : articleList) {
 			String replaceContent = HtmlParser.getPTagContent(article.getContent());
 			article.setContent(replaceContent);
@@ -75,6 +94,9 @@ public class ViewArticleAction extends ActionSupport {
 	}
 
 	public String viewArticleByTime() {
+		//获取当前访问的url路径，并去掉前面的/pblog
+		url=ServletActionContext.getRequest().getRequestURI();
+		url=url.substring(7);
 		articleList = articleService.getArticlesByTime(time);
 		for (Article article : articleList) {
 			String replaceContent = HtmlParser.getPTagContent(article.getContent());
@@ -165,6 +187,22 @@ public class ViewArticleAction extends ActionSupport {
 
 	public void setTime(String time) {
 		this.time = time;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getParams() {
+		return params;
+	}
+
+	public void setParams(String params) {
+		this.params = params;
 	}
 
 }

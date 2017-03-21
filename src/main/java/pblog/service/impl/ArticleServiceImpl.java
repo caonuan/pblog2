@@ -65,8 +65,8 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public List<Article> getAritleByClassAndPage(int blogClassId, int page) {
-		List<Article> list = articleDAO.getAritleByClassAndPage(blogClassId, page);
+	public List<Article> getAritleByClassAndPage(int blogClassId, int page,boolean ifShowHidden) {
+		List<Article> list = articleDAO.getAritleByClassAndPage(blogClassId, page,ifShowHidden);
 		return list;
 	}
 
@@ -129,8 +129,8 @@ public class ArticleServiceImpl implements ArticleService {
 
 	
 	@Override
-	public int getPageCountForClass(int blogClassId) {
-		int size = articleDAO.getPageCountForClass(blogClassId);
+	public int getPageCountForClass(int blogClassId,boolean ifShowHidden) {
+		int size = articleDAO.getPageCountForClass(blogClassId,ifShowHidden);
 		return (size % 10 == 0) ? (size / 10) : (size / 10 + 1);
 	}
 

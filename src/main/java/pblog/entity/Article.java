@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
 import org.hibernate.annotations.Type;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -20,6 +22,9 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 @Entity
 @Table
+//hibernate过滤器，当过滤器enable时，筛选出不隐藏的博文。此功能用于管理员通过博客类型浏览博文列表时显示隐藏博客
+@FilterDef(name="hiddenFilter")
+@Filter(name="hiddenFilter",condition="hidden!=1")
 public class Article {
 	private int articleId;
 	private String title;

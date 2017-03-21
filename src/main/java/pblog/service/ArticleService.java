@@ -38,9 +38,10 @@ public interface ArticleService {
 	 * 通过博文类型分页获取博文
 	 * @param blogClassId
 	 * @param page
+	 * @param ifShowHidden 是否显示隐藏博文
 	 * @return
 	 */
-	public List<Article> getAritleByClassAndPage(int blogClassId,int page);
+	public List<Article> getAritleByClassAndPage(int blogClassId,int page,boolean ifShowHidden);
 
 	/**
 	 * 管理员浏览时，1个page内十条信息，相当于调用dao内函数时传参为这里的page*2
@@ -79,9 +80,10 @@ public interface ArticleService {
 	 * 按类别取博文，计算页数
 	 * 
 	 * @param page
+	 * @param ifShowHidden 是否显示隐藏博文
 	 * @return页数
 	 */
-	public int getPageCountForClass(int blogClassId);
+	public int getPageCountForClass(int blogClassId,boolean ifShowHidden);
 	
 	public List<BlogClass> getAllBlogClass();
 

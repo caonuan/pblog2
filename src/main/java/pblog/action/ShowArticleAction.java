@@ -56,6 +56,8 @@ public class ShowArticleAction extends ActionSupport implements ServletRequestAw
 			visitorList = visitorService.getVisitorListByArticleReply(replyList);
 			blogClass = articleService.getBlogClassById(article.getBlogClassId());
 		}
+		if(article.getHidden()==1&&session.getAttribute("manager")==null)
+			return "error";
 		blogClassList = articleService.getAllBlogClass();
 		timeList = articleService.getAllMonthsWhichHaveArticle();
 		visitor = (Visitor) session.getAttribute("visitor");

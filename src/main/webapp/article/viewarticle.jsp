@@ -5,6 +5,7 @@
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	//System.out.println(basePath+"  "+request.getAttribute("url"));
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -146,30 +147,30 @@
 					<ul class="pager">
 						<s:if test="pageNow<=1">
 							<li class="previous disabled"><a onclick="return false"
-								href="<%=basePath %>article/viewArticle?pageNow=${pageNow}">&larr; 上一页</a></li>
+								href="<%=basePath %>${url}?pageNow=${pageNow}${params}">&larr; 上一页</a></li>
 						</s:if>
 						<s:else>
 							<li class="previous"><a
-								href="<%=basePath %>article/viewArticle?pageNow=${pageNow-1}">&larr; 上一页</a></li>
+								href="<%=basePath %>${url}?pageNow=${pageNow-1}${params}">&larr; 上一页</a></li>
 						</s:else>
 						<ul class="pagination  pagination-sm" style="margin: 0">
 							<c:forEach begin="1" end="${pageCount }" varStatus="status">
 								<c:if test="${ status.index==pageNow}">
 									<li class="disabled"><a onclick="return false"
-										href="<%=basePath %>article/viewArticle?pageNow=${status.index}">${status.index}</a></li>
+										href="<%=basePath %>${url}?pageNow=${status.index}${params}">${status.index}</a></li>
 								</c:if>
 								<c:if test="${ status.index!=pageNow}">
-									<li><a href="<%=basePath %>article/viewArticle?pageNow=${status.index}">${status.index}</a></li>
+									<li><a href="<%=basePath %>${url}?pageNow=${status.index}${params}">${status.index}</a></li>
 								</c:if>
 							</c:forEach>
 						</ul>
 						<s:if test="pageNow>=pageCount">
 							<li class="next disabled"><a onclick="return false"
-								href="<%=basePath %>article/viewArticle?pageNow=${pageNow}">下一页 &rarr;</a></li>
+								href="<%=basePath %>${url}?pageNow=${pageNow}${params}">下一页 &rarr;</a></li>
 						</s:if>
 						<s:else>
 							<li class="next"><a
-								href="<%=basePath %>article/viewArticle?pageNow=${pageNow+1}">下一页 &rarr;</a></li>
+								href="<%=basePath %>${url}?pageNow=${pageNow+1}${params}">下一页 &rarr;</a></li>
 						</s:else>
 					</ul>
 				</div>

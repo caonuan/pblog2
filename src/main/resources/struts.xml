@@ -120,6 +120,7 @@
 		<action name="showArticle" class="pblog.action.ShowArticleAction">
 			<interceptor-ref name="visitorInterceptors"></interceptor-ref>
 			<result>/article/showarticle.jsp</result>
+			<result name="error">/404.jsp</result>
 		</action>
 		<action name="addArticleReply" class="pblog.action.AddArticleReplyAction">
 			<result type="redirectAction">

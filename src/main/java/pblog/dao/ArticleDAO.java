@@ -49,16 +49,18 @@ public interface ArticleDAO {
 	 * 通过博文类型分页获取博文
 	 * @param blogClass
 	 * @param page
+	 * @param ifShowHidden 是否显示隐藏博文
 	 * @return
 	 */
-	public List<Article> getAritleByClassAndPage(int blogClassId,int page);
+	public List<Article> getAritleByClassAndPage(int blogClassId,int page,boolean ifShowHidden);
 	
 	/**
 	 * 获取某类博文的总页数。
 	 * @return 某类博文总页数
 	 * @param blogClass 博文类型
+	 * @param ifShowHidden 是否显示隐藏博文
 	 */
-	public int getPageCountForClass(int blogClassId);
+	public int getPageCountForClass(int blogClassId,boolean ifShowHidden);
 	
 	/**
 	 * 添加博客
