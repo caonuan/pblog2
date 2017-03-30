@@ -22,7 +22,7 @@
 			<div style="float: left; width: 255px; height: 240px">
 				<img alt="" src="<%=basePath %>../${photo.url}"
 					style="max-width: 250px; max-height: 200px;"></br> <a
-					href="<%=basePath%>manager/deletePhoto?photoId=${photo.photoId}&albumId=${albumId}">删除图片</a></br>
+					href="<%=basePath%>manage/deletePhoto?photoId=${photo.photoId}&albumId=${albumId}">删除图片</a></br>
 
 			</div>
 		</s:iterator>

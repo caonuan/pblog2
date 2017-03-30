@@ -4,7 +4,7 @@
 <%
 	String manager = (String) session.getAttribute("manager");
 	if (manager == null )
-		response.sendRedirect("/manager/login");
+		response.sendRedirect("/manage/login");
 %>
 <%
 	String path = request.getContextPath();
@@ -48,18 +48,18 @@
 		<div class="easyui-pagination" id="pagination"
 			data-options="total: ${pageCount*10 },showPageList: false,showRefresh: false,displayMsg: '',pageNumber:${page },
 			onSelectPage:function(pageNumber, pageSize){
-				$('#main').panel('refresh','<%=basePath%>manager/manageArticle?page='+pageNumber);
+				$('#main').panel('refresh','<%=basePath%>manage/manageArticle?page='+pageNumber);
 			}"
 			style="width: 225px"></div>
 	</div>
 	<!-- <a id="backPage"
-		href="<%=basePath%>manager/manageArticle?page=${page-1}">上一页</a>
+		href="<%=basePath%>manage/manageArticle?page=${page-1}">上一页</a>
 	${page}/${pageCount}
 	<a id="nextPage"
-		href="<%=basePath%>manager/manageArticle?page=${page+1}">下一页</a>
+		href="<%=basePath%>manage/manageArticle?page=${page+1}">下一页</a>
 	<br>
 	<c:forEach var="i" begin="1" end="${pageCount}">
-		<a href="<%=basePath%>manager/manageArticle?page=${i}">${i}</a>
+		<a href="<%=basePath%>manage/manageArticle?page=${i}">${i}</a>
 	</c:forEach>
 	<script type="text/javascript">
 		page = $

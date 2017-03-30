@@ -19,7 +19,7 @@
 <script type="text/javascript" src="<%=basePath %>easyui/jquery.easyui.min.js"></script>
 </head>
 <body>
-	<a href="<%=basePath %>manager/addPhoto">返回</a>
+	<a href="<%=basePath %>manage/addPhoto">返回</a>
 	<div
 		style="padding: 3px; border: solid 1px #cccccc; text-align: center">
 		<img src="<%=basePath %><s:property value ="url"/> " /> <br />

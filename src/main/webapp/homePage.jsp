@@ -80,7 +80,7 @@
 											target="_blank">Github:caonuan</a> 。 -->
 										欢迎来到Panacea技术博客测试版v1.0。目前功能尚未开发完全，后期将持续补充。对此博客有任何意见均可在留言页面进行留言或者直接与我本人联系。留言界面无需注册，使用一次后自动绑定ip地址。
 										源码暂时不公布。想查看管理界面请访问<a rel="nofollow"
-											href="http://caonuan.science/pblog2/manager/managerLogin">这里</a>，账号ustb，密码admin。请勿肆意修改。
+											href="http://caonuan.science/manage/managerLogin">这里</a>，账号ustb，密码admin。请勿肆意修改。
 									</p>
 									<p class="tm-text" style="text-align: right;">16/8/24</p>
 									<p class="tm-text" style="text-align: right;">曹怒安</p>
@@ -109,7 +109,7 @@
 							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 								<div class="tm-footer-content-box">
 									<h3 style="color: #cc9900">管理界面入口</h3>
-									<a href="http://caonuan.science/pblog2/manager/login">管理</a>
+									<a href="http://caonuan.science/manage/login">管理</a>
 								</div>
 							</div>
 						</div>

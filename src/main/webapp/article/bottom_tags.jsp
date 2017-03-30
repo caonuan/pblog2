@@ -54,7 +54,7 @@
 						<li><a href="<%=basePath%>article/viewArticle?pageNow=1">博客</a></li>
 						<li><a href="#">相册 </a></li>
 						<li><a href="#">留言</a></li>
-						<li><a href="http://www.caonuan.science/pblog2/manager/login">管理</a></li>
+						<li><a href="http://www.caonuan.science/manage/login">管理</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 amet-sed ">

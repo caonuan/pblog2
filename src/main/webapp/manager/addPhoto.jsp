@@ -21,7 +21,7 @@
 <body>
 	<div class="easyui-panel" title="添加照片" style="width: 400px" data-options="iconCls:'icon-save',tools:'#tt'">
 		<div style="padding: 10px 60px 20px 60px" >
-			<s:form action="/manager/addPhotoResult" method="post"
+			<s:form action="/manage/addPhotoResult" method="post"
 				enctype="multipart/form-data" namespace="/" class="easyui-form"
 				data-options="novalidate:true">
 				<s:select name="albumId" list="albumMap" value="albumId"></s:select>
@@ -36,7 +36,7 @@
 		</div>
 	</div>
 	<div id="tt">
-		<a  class="icon-back" href="<%=basePath%>manager/manageAlbum"></a>
+		<a  class="icon-back" href="<%=basePath%>manage/anageAlbum"></a>
 	</div>
 </body>
 </html>

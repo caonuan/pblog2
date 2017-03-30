@@ -8,7 +8,7 @@
 <%
 	String manager = (String) session.getAttribute("manager");
 	if (manager == null )
-		response.sendRedirect(basePath+"/manager/login");
+		response.sendRedirect(basePath+"/manage/login");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -56,33 +56,33 @@ a, a:visited {
 			<div class="easyui-accordion" style="width: 96%; height: 100%;"
 				id="acc">
 				<div title="日志管理" style="overflow: auto; padding: 10px;"
-					data-options="href:'<%=path%>/manager/manageArticle?page=1',tools:[{
+					data-options="href:'<%=path%>/manage/manageArticle?page=1',tools:[{
 					iconCls:'icon-reload',
 					handler:function(){
 						var pp = $('#acc').accordion('getSelected'); 
 						if (pp){
-   						 pp.panel('refresh','<%=path%>/manager/manageArticle?page=1'); 
+   						 pp.panel('refresh','<%=path%>/manage/manageArticle?page=1'); 
 						}	
 					}
 				}]">
 				</div>
 				<div title="相册管理" style="padding: 10px;"
-					data-options="href:'<%=path%>/manager/manageAlbum',tools:[{
+					data-options="href:'<%=path%>/manage/manageAlbum',tools:[{
 					iconCls:'icon-reload',
 					handler:function(){
 						var pp = $('#acc').accordion('getSelected'); 
 						if (pp){
-   						 pp.panel('refresh','<%=path%>/manager/manageAlbum'); 
+   						 pp.panel('refresh','<%=path%>/manage/manageAlbum'); 
 						}
 					}
 				}]"></div>
 				<div title="留言管理" style="padding: 10px"
-					data-options="href:'<%=path%>/manager/managerNote?page=1',tools:[{
+					data-options="href:'<%=path%>/manage/managerNote?page=1',tools:[{
 					iconCls:'icon-reload',
 					handler:function(){
 						var pp = $('#acc').accordion('getSelected'); 
 						if (pp){
-   						 pp.panel('refresh','<%=path%>/manager/managerNote?page=1'); 
+   						 pp.panel('refresh','<%=path%>/manage/managerNote?page=1'); 
 						}
 					}
 				}]"></div>
@@ -99,15 +99,15 @@ a, a:visited {
 			onSelect:function(title,index){
 				if(index==0){
 					var pp = $('#acc').accordion('getSelected'); 
-					pp.panel('refresh','<%=path%>/manager/manageArticle?page=1'); 
+					pp.panel('refresh','<%=path%>/manage/manageArticle?page=1'); 
 				}
 				if(index==1){
 					var pp = $('#acc').accordion('getSelected'); 
-					pp.panel('refresh','<%=path%>/manager/manageAlbum'); 
+					pp.panel('refresh','<%=path%>/manage/manageAlbum'); 
 				}
 				if(index==2){
 					var pp = $('#acc').accordion('getSelected'); 
-					pp.panel('refresh','<%=path%>/manager/managerNote?page=1');
+					pp.panel('refresh','<%=path%>/manage/managerNote?page=1');
 						}
 					}
 				});

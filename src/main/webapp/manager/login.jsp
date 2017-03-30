@@ -129,7 +129,7 @@ input.submit {
 				onClick="login.style.display='none';bgDiv.style.display='none'">X</span>
 		</div>
 		<div class="login">
-			<form method="post" action="<%=basePath%>manager/managerlogin">
+			<form method="post" action="<%=basePath%>manage/managerlogin">
 				<table>
 					<tr>
 						<td>用户名:</td>

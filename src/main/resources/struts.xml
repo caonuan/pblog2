@@ -14,7 +14,7 @@
 	<constant name="struts.action.excludePattern" value="/ckeditor/.*,/ckfinder/.*" />
 	<constant name="struts.multipart.maxSize" value="524288000" />
 
-	<package name="manager" namespace="/manager" extends="struts-default">
+	<package name="manage" namespace="/manage" extends="struts-default">
 		<interceptors>
 			<interceptor name="managerLoginInterceptor" class="pblog.util.ManagerLoginInterceptor"></interceptor>
 			<interceptor-stack name="managerInterceptors">
@@ -39,11 +39,11 @@
 		<!-- manageArticle manageAlbum manageNote -->
 		<action name="manage*" class="pblog.action.ManageSelectAction"
 			method="manage{1}">
-			<result>/manager/manage{1}.jsp</result>
+			<result>/manage/manage{1}.jsp</result>
 			<interceptor-ref name="managerLoginInterceptor"></interceptor-ref>
 		</action>
 		<action name="showPhotoForAlbum" class="pblog.action.ShowPhotoForAlbumAction">
-			<result>/manager/showPhotoForAlbum.jsp</result>
+			<result>/manage/showPhotoForAlbum.jsp</result>
 		</action>
 		<action name="addPhoto" class="pblog.action.ManagePhotoAction"
 			method="addPhoto">
@@ -51,12 +51,12 @@
 		</action>
 		<action name="addPhotoResult" class="pblog.action.ManagePhotoAction"
 			method="addPhotoResult">
-			<result>/manager/showAddPhotoResult.jsp</result>
+			<result>/manage/showAddPhotoResult.jsp</result>
 		</action>
 		<action name="deletePhoto" class="pblog.action.ManagePhotoAction"
 			method="deletePhoto">
 			<result type="redirectAction">
-				<param name="actionName">/manager/showPhotoForAlbum</param>
+				<param name="actionName">/manage/showPhotoForAlbum</param>
 				<param name="albumId">${albumId}</param>
 			</result>
 		</action>

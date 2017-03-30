@@ -3,7 +3,7 @@
 <%
 	String manager = (String) session.getAttribute("manager");
 	if (manager == null )
-		response.sendRedirect("/manager/login");
+		response.sendRedirect("/manage/login");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

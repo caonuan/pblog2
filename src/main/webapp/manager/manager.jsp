@@ -8,7 +8,7 @@
 <%
 	String manager = (String) session.getAttribute("manager");
 	if (manager == null )
-		response.sendRedirect(basePath+"/manager/login");
+		response.sendRedirect(basePath+"/manage/login");
 %>
 <html>
 <head>
@@ -17,7 +17,7 @@
 </head>
 <body>
 
-	<form action="manager/managerlogin"  method="post">
+	<form action="manage/managerlogin"  method="post">
 		<input type="text" name="username">
 		<input type="password" name="password">
 		<input type="submit" name="登录">

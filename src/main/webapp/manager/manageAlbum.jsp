@@ -8,7 +8,7 @@
 			+ path + "/";
 	String manager = (String) session.getAttribute("manager");
 	if (manager == null )
-		response.sendRedirect("/manager/login");
+		response.sendRedirect("/manage/login");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -58,9 +58,9 @@
 				<td><img alt="${album.albumName }"
 					src="<%=basePath%>../${album.albumUrl }" width="150" height="200"></td>
 				<td><a href="#"
-					onclick="open1('<%=basePath%>manager/addPhoto?albumId=${album.albumId }')">添加图片</a><br />
+					onclick="open1('<%=basePath%>manage/addPhoto?albumId=${album.albumId }')">添加图片</a><br />
 					<a href="#"
-					onclick="open1('<%=basePath%>manager/showPhotoForAlbum?albumId=${album.albumId }')">查看图片</a>
+					onclick="open1('<%=basePath%>manage/showPhotoForAlbum?albumId=${album.albumId }')">查看图片</a>
 				</td>
 				<td>
 					<a href="#" onclick="open1('<%=basePath%>editor/deleteAlbum?albumId=${album.albumId}')">删除相册</a>
