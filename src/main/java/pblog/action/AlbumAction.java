@@ -26,15 +26,7 @@ public class AlbumAction extends BasicAction {
     private static final long serialVersionUID = 6118167327473682710L;
     private int albumId;
     private int pageNow;
-
-    public int getPageNow() {
-        return pageNow;
-    }
-
-    public void setPageNow(int pageNow) {
-        this.pageNow = pageNow;
-    }
-
+    private Album album;
     private List<Album> albumList;
     private List<Photo> photoList;
     private PhotoService photoService;
@@ -51,6 +43,7 @@ public class AlbumAction extends BasicAction {
             @Result(name = "success", location = "/album/showAlbum.jsp")
     })
     public String showAlbum() throws Exception {
+        album = photoService.getAlbum(albumId);
         photoList = photoService.getAlbumPhoto(albumId);
         return super.execute();
     }
@@ -86,5 +79,21 @@ public class AlbumAction extends BasicAction {
 
     public void setPhotoList(List<Photo> photoList) {
         this.photoList = photoList;
+    }
+
+    public int getPageNow() {
+        return pageNow;
+    }
+
+    public void setPageNow(int pageNow) {
+        this.pageNow = pageNow;
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 }

@@ -10,7 +10,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>博文列表</title>
+<title>${album.albumName}</title>
 <link rel="shortcut icon" type="image/x-icon" href="<%=basePath%>img/favicon.ico" />
 <link href="<%=basePath%>css/bootstrap.css" rel="stylesheet" type="text/css"
 	  media="all" />
@@ -116,7 +116,7 @@
 			<div class="events-grid">
 				<s:iterator value="photoList" id="photo">
 					<div class="col-md-4" style="text-align: center;">
-						<img class="img-responsive even" src="${basic_url}${photo.tUrl}"
+						<img class="img-responsive even" src="${photo.tUrl}"
 							style="top: 0px;" alt="${photo.photoName}" />
 							<span>${photo.photoName}</span>
 					</div>

@@ -1,17 +1,34 @@
 package pblog.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import pblog.util.PropertiesReader;
+import pblog.util.SingleApplicationContext;
 
 /**
  * Created by caonuan on 2017/8/6.
  */
 public class BasicAction extends ActionSupport {
-    private String basic_url = "http://www.我是你爷爷.top";
+    private PropertiesReader propertiesReader = (PropertiesReader) SingleApplicationContext.getApplicationContext().getBean("propertiesReader");
+    private String basic_url = propertiesReader.basic_url;
+    private String image_process = propertiesReader.aliyun_image_process;
+    private String image_server = propertiesReader.aliyun_oss_path;
     private String home_page = "home";
     private String article_page = "article/";
     private String album_page = "album/";
     private String note_page = "note/";
     private String manage_page = "manage/";
+
+
+    public PropertiesReader getPropertiesReader() {
+        return propertiesReader;
+    }
+
+    public void setPropertiesReader(PropertiesReader propertiesReader) {
+        this.propertiesReader = propertiesReader;
+    }
 
     public String getBasic_url() {
         return basic_url;
@@ -59,5 +76,21 @@ public class BasicAction extends ActionSupport {
 
     public void setManage_page(String manage_page) {
         this.manage_page = manage_page;
+    }
+
+    public String getImage_server() {
+        return image_server;
+    }
+
+    public void setImage_server(String image_server) {
+        this.image_server = image_server;
+    }
+
+    public String getImage_process() {
+        return image_process;
+    }
+
+    public void setImage_process(String image_process) {
+        this.image_process = image_process;
     }
 }

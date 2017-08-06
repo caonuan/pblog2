@@ -21,8 +21,8 @@
 <body>
 	<div class="easyui-panel" title="添加照片" style="width: 400px" data-options="iconCls:'icon-save',tools:'#tt'">
 		<div style="padding: 10px 60px 20px 60px" >
-			<s:form action="/manage/addPhotoResult" method="post"
-				enctype="multipart/form-data" namespace="/" class="easyui-form"
+			<s:form action="addPhotoResult" method="post"
+				enctype="multipart/form-data" namespace="/manage" class="easyui-form"
 				data-options="novalidate:true">
 				<s:select name="albumId" list="albumMap" value="albumId"></s:select>
 				<!--<s:file name="myFile" label="MyFile" ></s:file>

@@ -11,7 +11,9 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import pblog.action.BasicAction;
 import pblog.service.ArticleService;
+import pblog.util.PropertiesReader;
 import pblog.util.SingleApplicationContext;
 import pblog.util.Util;
 
@@ -125,4 +127,10 @@ public class Test1 {
 //        System.out.println(true=="true");
 	}
 
+	@Test
+	public void springTest(){
+		ApplicationContext ac=SingleApplicationContext.getApplicationContext();
+		SpringTest2 st2= (SpringTest2) ac.getBean("springTest2");
+		st2.test();
+	}
 }

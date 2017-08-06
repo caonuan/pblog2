@@ -2,14 +2,7 @@ package pblog.entity;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -25,6 +18,7 @@ public class Photo {
 	private String url;
 	private Date publishDate;
 	private int albumId;
+	@Transient
 	private String tUrl;
 
 	public Photo() {

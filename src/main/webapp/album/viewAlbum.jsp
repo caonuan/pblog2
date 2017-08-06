@@ -10,7 +10,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>博文列表</title>
+<title>相册列表</title>
 <link rel="shortcut icon" type="image/x-icon" href="<%=basePath%>img/favicon.ico" />
 <link href="<%=basePath%>css/bootstrap.css" rel="stylesheet" type="text/css"
 	  media="all" />
@@ -114,11 +114,11 @@
 		<div class="events">
 			<h2>相册</h2>
 			<div class="events-grid">
-				<s:iterator value="albumList" id="album">
+				<s:iterator value="albumList" id="_album">
 					<div class="col-md-4 event-in" style="text-align: center;">
-						<a href="<%=basePath%>${album_page}showAlbum?albumId=${album.albumId}"> <img class="img-responsive even" src="${basic_url}${album.albumUrl}"
-							style="top: 0px;" alt="${album.albumName}" /> <span class="rollover1"> </span>
-							<span>${album.albumName}</span>
+						<a href="<%=basePath%>${album_page}showAlbum?albumId=${_album.albumId}"> <img class="img-responsive even" src="${_album.albumUrl}"
+							style="top: 0px;" alt="${_album.albumName}" /> <span class="rollover1"> </span>
+							<span>${_album.albumName}</span>
 						</a>
 					</div>
 				</s:iterator>

@@ -7,9 +7,12 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import net.sf.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import pblog.entity.IPInfo;
 
 public class Util {
+    private static PropertiesReader pr=(PropertiesReader) SingleApplicationContext.getApplicationContext().getBean("propertiesReader");
+
     /**
      * 不着急实现
      */
@@ -107,7 +110,11 @@ public class Util {
     }
 
     public static String get_t_url(String url) {
-        return url.substring(0, url.lastIndexOf('.'))
-                + "_t" + url.substring(url.lastIndexOf('.'), url.length());
+        if (pr.open_aliyun_oss) {
+            return pr.aliyun_oss_path + url + pr.aliyun_image_process;
+        } else {
+            return pr.basic_url + url.substring(0, url.lastIndexOf('.'))
+                    + "_t" + url.substring(url.lastIndexOf('.'), url.length());
+        }
     }
 }

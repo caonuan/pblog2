@@ -34,7 +34,7 @@
 		*/
 	</script>
 	<form class="easyui-form" id="createAlbumForm"
-		action="<%=basePath%>editor/createAlbum"
+		action="<%=basePath%>/createAlbum"
 		onsubmit="return submitForm()" data-options="novalidate:true">
 		相册名称<input name="albumName" class="easyui-textbox" type="text"
 			data-options="required:true" /> <input type="submit"
@@ -56,7 +56,7 @@
 			<tr>
 				<td>${album.albumName}</td>
 				<td><img alt="${album.albumName }"
-					src="<%=basePath%>../${album.albumUrl }" width="150" height="200"></td>
+					src="${album.albumUrl }" width="150" height="200"></td>
 				<td><a href="#"
 					onclick="open1('<%=basePath%>manage/addPhoto?albumId=${album.albumId }')">添加图片</a><br />
 					<a href="#"
