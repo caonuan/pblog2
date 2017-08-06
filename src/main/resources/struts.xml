@@ -138,6 +138,18 @@
 			<result>/article/viewarticle.jsp</result>
 		</action>
 	</package>
+	
+	<package name="album" namespace="/album" extends="struts-default">
+		<action name="viewAlbum" class="pblog.action.ViewAlbumAction">
+			<result>/album/viewAlbum.jsp</result>
+		</action>
+	</package>
+	
+	<package name="note" namespace="/note" extends="struts-default">
+		<action name="showNote" class="pblog.action.NoteAction">
+			<result>/note/note.jsp</result>
+		</action>
+	</package>
 
 	<package name="default" namespace="/" extends="struts-default">
 		<interceptors>

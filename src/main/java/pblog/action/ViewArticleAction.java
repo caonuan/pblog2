@@ -43,9 +43,9 @@ public class ViewArticleAction extends ActionSupport{
 
 	@Override
 	public String execute() throws Exception {
-		//获取当前访问的url路径，并去掉前面的/pblog
+		//获取当前访问的url路径，并去掉前面的/(jsp界面中basepath有'/')
 		url=ServletActionContext.getRequest().getRequestURI();
-		url=url.substring(7);
+		url=url.substring(1);
 		pageCount = articleService.getPageCount(10);
 		articleList=articleService.getTopPostedArticle();
 		articleList.addAll( articleService.getSomeArticle(pageNow,10,-1));
@@ -59,9 +59,9 @@ public class ViewArticleAction extends ActionSupport{
 	}
 
 	public String searchArticle() {
-		//获取当前访问的url路径，并去掉前面的/pblog
+		//获取当前访问的url路径，并去掉前面的/(jsp界面中basepath有'/')
 		url=ServletActionContext.getRequest().getRequestURI();
-		url=url.substring(7);
+		url=url.substring(1);
 		pageCount = searchService.getArticleCountByKeyWord(keyWord);
 		articleList = searchService.getArticleByKeyWord(keyWord, pageNow);
 		for (Article article : articleList) {
@@ -74,11 +74,11 @@ public class ViewArticleAction extends ActionSupport{
 	}
 
 	public String viewArticleByBlogClass() {
-		//获取当前访问的url路径，并去掉前面的/pblog
+		//获取当前访问的url路径，并去掉前面的/(jsp界面中basepath有'/')
 		HttpServletRequest request= ServletActionContext.getRequest();
 		url=request.getRequestURI();
 		params="&blogClassId="+blogClassId;
-		url=url.substring(7);
+		url=url.substring(1);
 		boolean ifShowHidden=false;
 		if(ServletActionContext.getRequest().getSession().getAttribute("manager")!=null)
 			ifShowHidden=true;
@@ -94,9 +94,9 @@ public class ViewArticleAction extends ActionSupport{
 	}
 
 	public String viewArticleByTime() {
-		//获取当前访问的url路径，并去掉前面的/pblog
+		//获取当前访问的url路径，并去掉前面的/(jsp界面中basepath有'/')
 		url=ServletActionContext.getRequest().getRequestURI();
-		url=url.substring(7);
+		url=url.substring(1);
 		articleList = articleService.getArticlesByTime(time);
 		for (Article article : articleList) {
 			String replaceContent = HtmlParser.getPTagContent(article.getContent());

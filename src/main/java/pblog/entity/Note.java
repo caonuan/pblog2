@@ -6,10 +6,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -24,11 +27,13 @@ public class Note {
 	private Date publishDate;
 	private int visitorId; // �൱��sendId
 	private int receiveId;
+	private Visitor visitor;
 
 	public Note() {
 	}
 
-	public Note(int noteId, String content, Date publishDate, int visitorId, int receiveId) {
+	public Note(int noteId, String content, Date publishDate, int visitorId,
+			int receiveId) {
 		super();
 		this.noteId = noteId;
 		this.content = content;
@@ -83,6 +88,17 @@ public class Note {
 
 	public void setReceiveId(int receiveId) {
 		this.receiveId = receiveId;
+	}
+
+	@ManyToOne
+	@Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+	@JoinColumn(name = "visitorId",insertable=false,updatable=false)
+	public Visitor getVisitor() {
+		return visitor;
+	}
+
+	public void setVisitor(Visitor visitor) {
+		this.visitor = visitor;
 	}
 
 }

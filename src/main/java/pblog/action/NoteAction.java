@@ -1,5 +1,7 @@
 package pblog.action;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import pblog.entity.Note;
 import pblog.entity.Visitor;
 import pblog.service.NoteService;
 import pblog.service.VisitorService;
@@ -30,6 +33,7 @@ public class NoteAction extends ActionSupport implements ServletRequestAware {
 	private NoteService noteService;
 	private VisitorService visitorService;
 	private HttpSession session;
+	private List<Note> noteList;
 
 	public String addNote() {
 		Visitor visitor = (Visitor) session.getAttribute("visitor");
@@ -40,6 +44,12 @@ public class NoteAction extends ActionSupport implements ServletRequestAware {
 			session.setAttribute("visitor", visitor);
 		}
 		noteService.addNote(content, visitor.getVisitorId(), 1);
+		return SUCCESS;
+	}
+	
+	@Override
+	public String execute(){
+		noteList=noteService.getAllNote();
 		return SUCCESS;
 	}
 
@@ -113,4 +123,13 @@ public class NoteAction extends ActionSupport implements ServletRequestAware {
 	public void setServletRequest(HttpServletRequest request) {
 		session = request.getSession();
 	}
+
+	public List<Note> getNoteList() {
+		return noteList;
+	}
+
+	public void setNoteList(List<Note> noteList) {
+		this.noteList = noteList;
+	}
+	
 }

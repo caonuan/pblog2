@@ -78,4 +78,8 @@
 	</servlet-mapping>
 	<!-- =================ckeditor+ckfinder图片上传功能的配置结束=================== -->
 
+	<error-page>
+		<error-code>500</error-code>
+		<location>/404.jsp</location>
+	</error-page>
 </web-app>
