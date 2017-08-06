@@ -34,7 +34,7 @@ public class ShowArticleAction extends ActionSupport implements ServletRequestAw
 	 * 
 	 */
 	private static final long serialVersionUID = -5533346504612961386L;
-	private final String basicUrl="//www.caonuan.science";
+	private final String basicUrl="//www.我是你爷爷.top";
 	private int articleId;
 	private Article article;
 	private List<ArticleReply> replyList;

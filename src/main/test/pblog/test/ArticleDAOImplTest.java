@@ -46,7 +46,7 @@ public class ArticleDAOImplTest {
 	
 	@Test
 	public void getAritleByClassAndPageTest(){
-		List<Article> list=adao.getAritleByClassAndPage(2,1);
+		List<Article> list=adao.getAritleByClassAndPage(2,1,true);
 		for (Article article : list) {
 			System.out.println(article.getBlogClassId());
 		}
@@ -55,7 +55,7 @@ public class ArticleDAOImplTest {
 	
 	@Test
 	public void gerPageCountForClassTest(){
-		int page=adao.getPageCountForClass(1);
+		int page=adao.getPageCountForClass(1,true);
 		System.out.println(page);
 	}
 	

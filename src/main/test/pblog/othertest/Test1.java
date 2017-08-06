@@ -118,6 +118,11 @@ public class Test1 {
 		Date date = new Date();
 		System.out.println(date);
 	}
-	
-	
+
+
+	@Test
+	public void equalTest(){
+//        System.out.println(true=="true");
+	}
+
 }
