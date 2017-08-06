@@ -13,6 +13,7 @@ import javax.persistence.TemporalType;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import pblog.util.Util;
 
 @Component
 @Scope("prototype")
@@ -24,6 +25,7 @@ public class Photo {
 	private String url;
 	private Date publishDate;
 	private int albumId;
+	private String tUrl;
 
 	public Photo() {
 	}
@@ -85,4 +87,11 @@ public class Photo {
 		this.photoName = photoName;
 	}
 
+	public String gettUrl() {
+		return Util.get_t_url(getUrl());
+	}
+
+	public void settUrl(String tUrl) {
+		this.tUrl = tUrl;
+	}
 }

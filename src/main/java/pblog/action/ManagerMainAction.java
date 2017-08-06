@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @Controller
 @Scope("prototype")
-public class ManagerMainAction extends ActionSupport implements ServletRequestAware {
+public class ManagerMainAction extends BasicAction implements ServletRequestAware {
 	private HttpSession session;
 
 	@Override

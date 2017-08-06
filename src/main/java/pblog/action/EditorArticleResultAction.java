@@ -11,7 +11,7 @@ import pblog.service.ArticleService;
 
 @Controller
 @Scope("prototype")
-public class EditorArticleResultAction extends ActionSupport {
+public class EditorArticleResultAction extends BasicAction {
 	/**
 	 * 
 	 */

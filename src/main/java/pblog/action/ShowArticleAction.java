@@ -28,7 +28,7 @@ import pblog.service.VisitorService;
  */
 @Controller
 @Scope("prototype")
-public class ShowArticleAction extends ActionSupport implements ServletRequestAware {
+public class ShowArticleAction extends BasicAction implements ServletRequestAware {
 
 	/**
 	 * 

@@ -13,7 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import pblog.service.ManagerService;
 @Controller
 @Scope("prototype")
-public class ManagerAction extends ActionSupport implements ServletRequestAware{
+public class ManagerAction extends BasicAction implements ServletRequestAware{
 	/**
 	 * 
 	 */

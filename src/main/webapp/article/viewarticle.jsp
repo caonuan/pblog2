@@ -85,10 +85,10 @@
 				<div class="top-nav">
 					<span class="menu"> </span>
 					<ul>
-						<li><a href="<%=basePath%>/home" data-hover="主页">主页</a></li>
-						<li class="active"><a href="<%=basePath%>article/viewArticle?pageNow=1">博客</a></li>
-						<li><a href="#" data-hover="相册"> 相册 </a></li>
-						<li><a href="#" data-hover="留言"> 留言</a></li>
+						<li><a href="<%=basePath%>${home_page}" data-hover="主页">主页</a></li>
+						<li class="active"><a href="<%=basePath%>${article_page}">博客</a></li>
+						<li><a href="<%=basePath%>${album_page}" data-hover="相册"> 相册 </a></li>
+						<li><a href="<%=basePath%>${note_page}" data-hover="留言"> 留言</a></li>
 					</ul>
 					<!--script-->
 					<script>

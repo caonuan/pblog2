@@ -138,6 +138,12 @@ public class PhotoServiceImpl implements PhotoService {
 	@Override
 	public List<Album> getAllAlbum() {
 		List<Album> list = albumDAO.getAllAblum();
+		for (Album album : list) {
+			if (album.getAlbumUrl() == null || album.getAlbumUrl().equals("")) {
+				Photo selectphoto = getTopPhotoForAlbum(album.getAlbumId());
+				album.setAlbumUrl(selectphoto == null ? null : Util.get_t_url(selectphoto.getUrl()));
+			}
+		}
 		return list;
 	}
 

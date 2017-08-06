@@ -29,6 +29,9 @@
 		<action name="default" class="com.opensymphony.xwork2.ActionSupport">
 			<result>/404.jsp</result>
 		</action>
+		<action name="" class="com.opensymphony.xwork2.ActionSupport">
+			<result type="redirect">/manage/login</result>
+		</action>
 		<action name="login" class="pblog.action.ManagerMainAction">
 			<result name="already">main.jsp</result>
 		</action>
@@ -114,6 +117,9 @@
 		<action name="default" class="com.opensymphony.xwork2.ActionSupport">
 			<result>/404.jsp</result>
 		</action>
+		<action name="" class="com.opensymphony.xwork2.ActionSupport">
+			<result type="redirect">/article/viewArticle</result>
+		</action>
 		<action name="viewArticle" class="pblog.action.ViewArticleAction">
 			<result>/article/viewarticle.jsp</result>
 		</action>
@@ -140,12 +146,39 @@
 	</package>
 	
 	<package name="album" namespace="/album" extends="struts-default">
-		<action name="viewAlbum" class="pblog.action.ViewAlbumAction">
-			<result>/album/viewAlbum.jsp</result>
+		<interceptors>
+			<interceptor name="visitorLoginInterceptor" class="pblog.util.VisitorLoginInterceptor"></interceptor>
+			<interceptor-stack name="visitorInterceptors">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="visitorLoginInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="visitorInterceptors"></default-interceptor-ref>
+		<default-action-ref name="default"></default-action-ref>
+		<action name="default" class="com.opensymphony.xwork2.ActionSupport">
+			<result>/404.jsp</result>
+		</action>
+		<action name="" class="com.opensymphony.xwork2.ActionSupport">
+			<result type="redirect">/album/viewAlbum</result>
 		</action>
 	</package>
 	
 	<package name="note" namespace="/note" extends="struts-default">
+		<interceptors>
+			<interceptor name="visitorLoginInterceptor" class="pblog.util.VisitorLoginInterceptor"></interceptor>
+			<interceptor-stack name="visitorInterceptors">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="visitorLoginInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="visitorInterceptors"></default-interceptor-ref>
+		<default-action-ref name="default"></default-action-ref>
+		<action name="default" class="com.opensymphony.xwork2.ActionSupport">
+			<result>/404.jsp</result>
+		</action>
+		<action name="" class="com.opensymphony.xwork2.ActionSupport">
+			<result type="redirect">/note/showNote</result>
+		</action>
 		<action name="showNote" class="pblog.action.NoteAction">
 			<result>/note/note.jsp</result>
 		</action>
@@ -173,6 +206,15 @@
 				<param name="actionName">viewArticle</param>
 				<param name="pageNow">1</param>
 			</result>
+		</action>
+		<action name="article" class="com.opensymphony.xwork2.ActionSupport">
+			<result type="redirect">/article/</result>
+		</action>
+		<action name="album" class="com.opensymphony.xwork2.ActionSupport">
+			<result type="redirect">/album/</result>
+		</action>
+		<action name="note" class="com.opensymphony.xwork2.ActionSupport">
+			<result type="redirect">/note/</result>
 		</action>
 	</package>
 

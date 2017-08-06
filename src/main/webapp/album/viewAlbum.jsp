@@ -11,24 +11,34 @@
 <html>
 <head>
 <title>博文列表</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="shortcut icon" type="image/x-icon" href="<%=basePath%>img/favicon.ico" />
+<link href="<%=basePath%>css/bootstrap.css" rel="stylesheet" type="text/css"
+	  media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
+<script src="<%=basePath%>js/jquery.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords"
-	content="Inspired Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	addEventListener("load", function() {
+		setTimeout(hideURLbar, 0);
+	}, false);
+	function hideURLbar(){
+		window.scrollTo(0,1);
+	}
 </script>
-
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
+<!--fonts
+<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900'
+	rel='stylesheet' type='text/css'>
+-->
+<!--//fonts-->
+<script type="text/javascript" src="<%=basePath%>js/move-top.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/easing.js"></script>
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript"
+		charset="utf-8"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event) {
@@ -74,10 +84,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="top-nav">
 					<span class="menu"> </span>
 					<ul>
-						<li><a href="<%=basePath%>/home" data-hover="主页">主页</a></li>
-						<li><a href="<%=basePath%>article/viewArticle?pageNow=1" data-hover="博客">博客</a></li>
-						<li class="active"><a href="<%=basePath%>album/viewAlbum"> 相册 </a></li>
-						<li><a href="#" data-hover="留言"> 留言</a></li>
+						<li><a href="<%=basePath%>${home_page}" data-hover="主页">主页</a></li>
+						<li><a href="<%=basePath%>${article_page}" data-hover="博客">博客</a></li>
+						<li class="active"><a href="<%=basePath%>${album_page}"> 相册 </a></li>
+						<li><a href="<%=basePath%>${note_page}" data-hover="留言"> 留言</a></li>
 					</ul>
 					<!--script-->
 					<script>
@@ -102,67 +112,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!---->
 	<div class="container">
 		<div class="events">
-			<h2>EVENTS</h2>
+			<h2>相册</h2>
 			<div class="events-grid">
-				<div class="col-md-4 event-in">
-					<a href="single.html"> <img class="img-responsive even" src="images/pi.jpg"
-						style="top: 0px;" alt=" " /> <span class="rollover1"> </span>
-					</a>
-				</div>
-				<div class="col-md-4 event-in">
-					<a href="single.html"> <img class="img-responsive even"
-						src="images/pi1.jpg" style="top: 0px;" alt=" " /> <span class="rollover1">
-					</span>
-					</a>
-				</div>
-				<div class="col-md-4 event-in">
-					<a href="single.html"> <img class="img-responsive even"
-						src="images/pi2.jpg" style="top: 0px;" alt=" " /> <span class="rollover1">
-					</span>
-					</a>
-				</div>
-				<div class="col-md-4 event-in">
-					<a href="single.html"> <img class="img-responsive even"
-						src="images/pi3.jpg" style="top: 0px;" alt=" " /> <span class="rollover1">
-					</span>
-					</a>
-				</div>
-				<div class="col-md-4 event-in">
-					<a href="single.html"> <img class="img-responsive even"
-						src="images/pi4.jpg" style="top: 0px;" alt=" " /> <span class="rollover1">
-					</span>
-					</a>
-				</div>
-				<div class="col-md-4 event-in">
-					<a href="single.html"> <img class="img-responsive even"
-						src="images/pi5.jpg" style="top: 0px;" alt=" " /> <span class="rollover1">
-					</span>
-					</a>
-				</div>
-				<div class="col-md-4 event-in">
-					<a href="single.html"> <img class="img-responsive even"
-						src="images/pi6.jpg" style="top: 0px;" alt=" " /> <span class="rollover1">
-					</span>
-					</a>
-				</div>
-				<div class="col-md-4 event-in">
-					<a href="single.html"> <img class="img-responsive even"
-						src="images/pi7.jpg" style="top: 0px;" alt=" " /> <span class="rollover1">
-					</span>
-					</a>
-				</div>
-				<div class="col-md-4 event-in">
-					<a href="single.html"> <img class="img-responsive even"
-						src="images/pi3.jpg" style="top: 0px;" alt=" " /> <span class="rollover1">
-					</span>
-					</a>
-				</div>
+				<s:iterator value="albumList" id="album">
+					<div class="col-md-4 event-in" style="text-align: center;">
+						<a href="<%=basePath%>${album_page}showAlbum?albumId=${album.albumId}"> <img class="img-responsive even" src="${basic_url}${album.albumUrl}"
+							style="top: 0px;" alt="${album.albumName}" /> <span class="rollover1"> </span>
+							<span>${album.albumName}</span>
+						</a>
+					</div>
+				</s:iterator>
 				<div class="clearfix"></div>
 			</div>
 		</div>
 	</div>
 	
-		<%@include  file="bottom_tags.jsp"%>
+		<%@include  file="/bottom_tags.jsp"%>
 		<script type="text/javascript">
 			$(document).ready(function() {
 

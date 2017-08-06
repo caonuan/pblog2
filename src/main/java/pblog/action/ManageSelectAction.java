@@ -20,7 +20,7 @@ import pblog.service.NoteService;
 import pblog.service.PhotoService;
 @Controller
 @Scope("prototype")
-public class ManageSelectAction extends ActionSupport implements ServletRequestAware {
+public class ManageSelectAction extends BasicAction implements ServletRequestAware {
 	/**
 	 * 
 	 */
@@ -45,16 +45,6 @@ public class ManageSelectAction extends ActionSupport implements ServletRequestA
 
 	public String manageAlbum() {
 		albumList = photoService.getAllAlbum();
-		for (Album album : albumList) {
-			if (album.getAlbumUrl() == null || album.getAlbumUrl().equals("")) {
-				Photo selectphoto = photoService.getTopPhotoForAlbum(album.getAlbumId());
-				album.setAlbumUrl(selectphoto == null ? null : selectphoto.getUrl().substring(0, selectphoto.getUrl().lastIndexOf('.'))
-						+ "_t"
-						+ selectphoto.getUrl().substring(
-								selectphoto.getUrl().lastIndexOf('.'), selectphoto.getUrl()
-										.length()));
-			}
-		}
 		return SUCCESS;
 	}
 

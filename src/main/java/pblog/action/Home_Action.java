@@ -13,7 +13,7 @@ import pblog.service.ArticleService;
 import pblog.service.PhotoService;
 
 
-public class Home_Action extends ActionSupport {
+public class Home_Action extends BasicAction {
 	
 	/**
 	 * 

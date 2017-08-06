@@ -12,7 +12,7 @@ import pblog.service.PhotoService;
 
 @Controller
 @Scope("prototype")
-public class ManageAlbumAction extends ActionSupport {
+public class ManageAlbumAction extends BasicAction {
 	/**
 	 * 
 	 */

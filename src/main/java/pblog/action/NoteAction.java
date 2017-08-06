@@ -18,7 +18,7 @@ import pblog.service.NoteService;
 import pblog.service.VisitorService;
 @Controller
 @Scope("prototype")
-public class NoteAction extends ActionSupport implements ServletRequestAware {
+public class NoteAction extends BasicAction implements ServletRequestAware {
 
 	/**
 	 * 

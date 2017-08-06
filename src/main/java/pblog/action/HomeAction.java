@@ -27,7 +27,7 @@ import pblog.service.VisitorService;
 
 @Controller
 @Scope("prototype")
-public class HomeAction extends ActionSupport implements ServletRequestAware {
+public class HomeAction extends BasicAction implements ServletRequestAware {
 	/**
 	 * 
 	 */

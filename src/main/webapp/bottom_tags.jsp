@@ -15,11 +15,11 @@
 					<h4>导航</h4>
 					<i class="line"> </i>
 					<ul class="nav-bottom">
-						<li><a href="<%=basePath%>/home">主页</a></li>
-						<li><a href="<%=basePath%>article/viewArticle?pageNow=1">博客</a></li>
-						<li><a href="#">相册 </a></li>
-						<li><a href="#">留言</a></li>
-						<li><a href="http://www.caonuan.science/manage/login">管理</a></li>
+						<li><a href="<%=basePath%>${home_page}">主页</a></li>
+						<li><a href="<%=basePath%>${article_page}">博客</a></li>
+						<li><a href="<%=basePath%>${album_page}">相册 </a></li>
+						<li><a href="<%=basePath%>${note_page}">留言</a></li>
+						<li><a href="<%=basePath%>${manage_page}">管理</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 amet-sed ">

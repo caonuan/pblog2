@@ -3,6 +3,7 @@ package pblog.action;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.persistence.Basic;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,7 @@ import pblog.service.PhotoService;
 
 @Controller
 @Scope("prototype")
-public class ShowPhotoForAlbumAction extends ActionSupport {
+public class ShowPhotoForAlbumAction extends BasicAction {
 	/**
 	 * 
 	 */

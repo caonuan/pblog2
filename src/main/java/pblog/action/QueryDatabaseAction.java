@@ -15,7 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import pblog.dao.impl.SQLQuery;
 @Controller
 @Scope("prototype")
-public class QueryDatabaseAction extends ActionSupport {
+public class QueryDatabaseAction extends BasicAction {
 	@Autowired
 	private SQLQuery sqlQuery;
 	

@@ -17,7 +17,7 @@ import pblog.service.ArticleService;
 
 @Controller
 @Scope("prototype")
-public class EditorArticleAction extends ActionSupport
+public class EditorArticleAction extends BasicAction
 		implements ServletRequestAware {
 	/**
 	 * 

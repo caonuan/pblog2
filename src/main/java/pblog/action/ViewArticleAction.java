@@ -24,7 +24,7 @@ import pblog.util.HtmlParser;
  */
 @Controller
 @Scope("prototype")
-public class ViewArticleAction extends ActionSupport{
+public class ViewArticleAction extends BasicAction{
 
 	private static final long serialVersionUID = 6431374288194075322L;
 	private int pageNow;

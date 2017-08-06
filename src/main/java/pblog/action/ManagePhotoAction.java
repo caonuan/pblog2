@@ -26,7 +26,7 @@ import pblog.util.AffineTransImage;
 
 @Controller
 @Scope("prototype")
-public class ManagePhotoAction extends ActionSupport{
+public class ManagePhotoAction extends BasicAction{
 	/**
 	 * 
 	 */

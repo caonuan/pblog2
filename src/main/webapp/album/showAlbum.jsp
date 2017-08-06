@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	//System.out.println(basePath+"  "+request.getAttribute("url"));
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>留言</title>
+<title>博文列表</title>
 <link rel="shortcut icon" type="image/x-icon" href="<%=basePath%>img/favicon.ico" />
-<link href="<%=basePath%>css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<%=basePath%>css/bootstrap.css" rel="stylesheet" type="text/css"
+	  media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="<%=basePath%>js/jquery.min.js"></script>
 <!-- Custom Theme files -->
@@ -21,13 +22,23 @@
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords"
-	content="" />
 <script type="application/x-javascript">
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	addEventListener("load", function() {
+		setTimeout(hideURLbar, 0);
+	}, false);
+	function hideURLbar(){
+		window.scrollTo(0,1);
+	}
 </script>
+<!--fonts
+<link href='http://fonts.useso.com/css?family=Lato:100,300,400,700,900'
+	rel='stylesheet' type='text/css'>
+-->
+<!--//fonts-->
 <script type="text/javascript" src="<%=basePath%>js/move-top.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/easing.js"></script>
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript"
+		charset="utf-8"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event) {
@@ -52,16 +63,18 @@
 				<div class="header-top-on">
 					<ul class="social-in">
 						<li><span>分享这篇文章:</span></li>
-						<div class="fb-share-button"
-							data-href="http://www.caonuan.sicence/article/showArticle?articleId=21"
-							data-layout="button" data-size="small" data-mobile-iframe="true">
-							<a class="fb-xfbml-parse-ignore" target="_blank"
-								href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.caonuan.sicence%2Farticle%2FshowArticle%3FarticleId%3D21&amp;src=sdkpreparse">分享</a>
-						</div>
-						<li><a href="#" id="shareFacebook"><i></i></a></li>
+						<li><i></i></li>
 						<li><a href="#"><i class="tin"> </i></a></li>
 						<li><a href="#"><i class="message"> </i></a></li>
-						<li><a href="#"><i class="youtube"> </i></a></li>
+						<li><a href="#"
+							onclick="javascript:window.open('http://service.weibo.com/share/share.php?url=<%=basePath%>article/viewArticle?pageNow=${pageNow }&appkey=1074373392title=&pic=&ralateUid=Panaceaea&language=zh_cn',
+							'',
+							'width=632,height=388,toolbar=no, status=no, menubar=no, resizable=yes, scrollbars=yes')"><i
+								class="youtube"></i></a></li>
+						<div style="display: block;">
+							<wb:share-button appkey="1074373392" addition="simple" type="icon"
+								default_text="Panaceaea技术博客" ralateUid="3956186163"></wb:share-button>
+						</div>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -73,8 +86,8 @@
 					<ul>
 						<li><a href="<%=basePath%>${home_page}" data-hover="主页">主页</a></li>
 						<li><a href="<%=basePath%>${article_page}" data-hover="博客">博客</a></li>
-						<li><a href="<%=basePath%>${album_page}"  data-hover='相册'> 相册 </a></li>
-						<li class="active"><a href="<%=basePath%>${note_page}"> 留言</a></li>
+						<li class="active"><a href="<%=basePath%>${album_page}"> 相册 </a></li>
+						<li><a href="<%=basePath%>${note_page}" data-hover="留言"> 留言</a></li>
 					</ul>
 					<!--script-->
 					<script>
@@ -98,47 +111,33 @@
 	</div>
 	<!---->
 	<div class="container">
-		<div class="contact">
-			<div class="col-md-7 contact-para">
-				<p class="class-para">请填写相关信息</p>
-				<h5>留言</h5>
-				<form>
-					<div class="grid-contact">
-						<div class="col-md-6 contact-grid">
-							<p>NAME</p>
-							<input type="text" value="" onfocus="this.value='';"
-								onblur="if (this.value == '') {this.value ='';}">
-						</div>
-						<div class="clearfix"></div>
+		<div class="events">
+			<h2>相册</h2>
+			<div class="events-grid">
+				<s:iterator value="photoList" id="photo">
+					<div class="col-md-4" style="text-align: center;">
+						<img class="img-responsive even" src="${basic_url}${photo.tUrl}"
+							style="top: 0px;" alt="${photo.photoName}" />
+							<span>${photo.photoName}</span>
 					</div>
-					<div class="grid-contact">
-						<div class="col-md-6 contact-grid">
-							<p>E-MAIL ADDRESS</p>
-							<input type="text" value="" onfocus="this.value='';"
-								onblur="if (this.value == '') {this.value ='';}">
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<p class="your-para">MESSAGE</p>
-					<textarea cols="77" rows="6" value=" " onfocus="this.value='';"
-						onblur="if (this.value == '') {this.value = '';}"></textarea>
-					<div class="send">
-						<input type="submit" value="提交留言">
-					</div>
-				</form>
+				</s:iterator>
+				<div class="clearfix"></div>
 			</div>
-			<div class="col-md-5 contact-map">
-				<h5>GOOGLE-MAP</h5>
-				<div class="map">
-					<iframe
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37494223.23909492!2d103!3d55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x453c569a896724fb%3A0x1409fdf86611f613!2sRussia!5e0!3m2!1sen!2sin!4v1415776049771"></iframe>
-
-				</div>
-			</div>
-			<div class="clearfix"></div>
 		</div>
 	</div>
-	<!---->
-	<%@include file="../bottom_tags.jsp" %>
+	
+		<%@include  file="/bottom_tags.jsp"%>
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				$().UItoTop({
+					easingType : 'easeOutQuart'
+				});
+
+			});
+		</script>
+		<a href="#" id="toTop" style="display: block;"> <span id="toTopHover"
+			style="opacity: 1;"> </span></a>
+	</div>
 </body>
 </html>
