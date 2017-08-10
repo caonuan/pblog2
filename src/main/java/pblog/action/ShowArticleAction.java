@@ -34,7 +34,6 @@ public class ShowArticleAction extends BasicAction implements ServletRequestAwar
 	 * 
 	 */
 	private static final long serialVersionUID = -5533346504612961386L;
-	private final String basicUrl="//www.我是你爷爷.top";
 	private int articleId;
 	private Article article;
 	private List<ArticleReply> replyList;
@@ -82,7 +81,7 @@ public class ShowArticleAction extends BasicAction implements ServletRequestAwar
 						+ content.substring(searchIndex + 2, content.length());
 			searchIndex += 1;
 		} while (searchIndex != 0);
-		content=content.replaceAll("pblog/userfiles",basicUrl+"/pblog/userfiles");
+		content=content.replaceAll("pblog/userfiles",getImage_server()+"/pblog/userfiles");
 		article.setContent(content);
 		/*
 		 * if(visitor==null){ return "visitorNotExist"; }

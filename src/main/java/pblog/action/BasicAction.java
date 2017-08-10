@@ -79,7 +79,11 @@ public class BasicAction extends ActionSupport {
     }
 
     public String getImage_server() {
-        return image_server;
+        if(propertiesReader.open_aliyun_oss){
+            return image_server;
+        }else{
+            return basic_url;
+        }
     }
 
     public void setImage_server(String image_server) {
