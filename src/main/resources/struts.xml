@@ -185,7 +185,7 @@
 		<action name="addNote" class="pblog.action.NoteAction" method="addNote">
 			<result type="redirectAction">
 				<param name="namespace">/note</param>
-				<param name="actionName">/showNote</param>
+				<param name="actionName">showNote</param>
 			</result>
 		</action>
 	</package>

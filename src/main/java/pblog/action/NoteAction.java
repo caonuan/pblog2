@@ -18,6 +18,7 @@ import pblog.entity.Note;
 import pblog.entity.Visitor;
 import pblog.service.NoteService;
 import pblog.service.VisitorService;
+import pblog.util.EmailSender;
 
 @Controller
 @Scope("prototype")
@@ -40,6 +41,8 @@ public class NoteAction extends BasicAction implements ServletRequestAware {
     private Map<Integer, Visitor> visitorMap;
     private Integer receiveNoteId;
     private int receiveId;
+    //通过锚点跳转定位的noteId
+    private String position;
 
     public String addNote() {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
@@ -50,6 +53,8 @@ public class NoteAction extends BasicAction implements ServletRequestAware {
             session.setAttribute("visitor", visitor);
         }
         noteService.addNote(content, visitor.getVisitorId(), receiveId,receiveNoteId);
+        Visitor receiver=visitorService.getVisitorById(receiveId);
+        EmailSender.send_note_response(receiver,visitor,receiveNoteId);
         return SUCCESS;
     }
 
@@ -160,5 +165,13 @@ public class NoteAction extends BasicAction implements ServletRequestAware {
 
     public void setReceiveId(int receiveId) {
         this.receiveId = receiveId;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 }

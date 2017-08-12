@@ -133,4 +133,10 @@ public class Test1 {
 		SpringTest2 st2= (SpringTest2) ac.getBean("springTest2");
 		st2.test();
 	}
+
+	@Test
+	public void stringTest(){
+		String content="123"+":\n\t您好，您收到了来自\t"+"312"+"\t的新回复。\n\t请访问：\t"+"http:1234"+"\t查看详情。";
+		System.out.println(content);
+	}
 }

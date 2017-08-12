@@ -604,7 +604,7 @@ a.forgot:hover {
 }
 /*--contact--*/
 .contact {
-	padding: 6em 1em 4em;
+	padding: 3em 1em 4em;
 }
 p.class-para{
 	font-size: 1.1em;
@@ -742,7 +742,7 @@ p.your-para{
 	color: #000;
 }
 .top-comment-right p{
-	color: #B5B5B5;
+	color: #1f1f1f;
 	font-size:1em;
 	margin: 0;
 }
@@ -770,7 +770,7 @@ p.your-para{
 }
 .comments-area p {
 	padding: 8px 0;
-	margin: 0;
+	margin-left: 1em;
 }
 .web-in{
 	padding: 8px 0;

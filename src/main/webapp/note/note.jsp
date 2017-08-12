@@ -54,6 +54,10 @@
         $("#name").val("${visitor.name}");
         $("#email").val("${visitor.email}");
     }
+
+    function turn_to_note_place(){
+        location.href = "#note_place";
+    }
 </script>
 
 </head>
@@ -116,10 +120,12 @@
 	<!---->
 	<div class="container">
 		<div class="contact">
+            <button class="contact-para " onclick="javascript:turn_to_note_place()">前往发表留言</button>
 			<div class="comment-grid-top">
-				<h3>评论</h3>
+				<h3>留言</h3>
 				<s:iterator value="noteList" id="note" status="status">
 					<div class="comments-top-top">
+                        <a id="${note.noteId}" href="#${note.noteId}"></a>
 						<div class="top-comment-left">
 							<img class="img-responsive" src="<%=basePath%>img/co.png" alt="" />
 						</div>
