@@ -46,7 +46,7 @@ public class Photo {
 
 	@Column(name = "url")
 	public String getUrl() {
-		return url;
+		return Util.get_image_url(url);
 	}
 
 	public void setUrl(String url) {

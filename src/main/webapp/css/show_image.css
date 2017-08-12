@@ -1,0 +1,12 @@
+/*图片鼠标移到图片方法*/
+img{
+	cursor: pointer;
+	transition: all 0.6s;
+}
+
+img:hover{
+    transform: scale(1.4);
+}
+.col-md-4:hover{
+    z-index: 2;
+}

@@ -168,7 +168,7 @@
 						<div class="col-md-6 contact-grid">
 							<p>NAME</p>
 							<input id="name" name="name" type="text" value="${visitor.name }" onfocus="this.value='';"
-								onblur="if (this.value == '') {this.value ='${visitor.name }';}">
+								onblur="if (this.value == '') {this.value ='${visitor.name }';}" required>
 						</div>
                         <div class="col-md-6 contact-grid">
                             <p>在谁的评论下回复：</p>
@@ -181,7 +181,7 @@
 						<div class="col-md-6 contact-grid">
 							<p>E-MAIL ADDRESS</p>
 							<input id="email" name="email" type="text" value="${visitor.email }" onfocus="this.value='';"
-								onblur="if (this.value == '') {this.value ='${visitor.email }';}">
+								onblur="if (this.value == '') {this.value ='${visitor.email }';}" required>
 						</div>
                         <div class="col-md-6 contact-grid">
                             <p>回复给谁：</p>

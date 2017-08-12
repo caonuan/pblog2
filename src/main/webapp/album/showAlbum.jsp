@@ -11,17 +11,20 @@
 <html>
 <head>
 <title>${album.albumName}</title>
-<link rel="shortcut icon" type="image/x-icon" href="<%=basePath%>img/favicon.ico" />
-<link href="<%=basePath%>css/bootstrap.css" rel="stylesheet" type="text/css"
-	  media="all" />
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="<%=basePath%>js/jquery.min.js"></script>
-<!-- Custom Theme files -->
-<!--theme-style-->
-<link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!--//theme-style-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="<%=basePath%>img/favicon.ico"/>
+    <link href="<%=basePath%>css/bootstrap.css" rel="stylesheet" type="text/css"
+          media="all"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="<%=basePath%>js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="<%=basePath%>css/show_image.css"/>
+    <link  href="<%=basePath%>css/viewer.css" rel="stylesheet">
+    <script src="<%=basePath%>js/viewer.js"></script>
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <script type="application/x-javascript">
 	addEventListener("load", function() {
 		setTimeout(hideURLbar, 0);
@@ -48,6 +51,8 @@
 			}, 1000);
 		});
 	});
+
+
 </script>
 
 </head>
@@ -113,11 +118,10 @@
 	<div class="container">
 		<div class="events">
 			<h2>相册</h2>
-			<div class="events-grid">
+			<div class="events-grid" id="images">
 				<s:iterator value="photoList" id="photo">
 					<div class="col-md-4" style="text-align: center;">
-						<img class="img-responsive even" src="${photo.tUrl}"
-							style="top: 0px;" alt="${photo.photoName}" />
+						<img data-original="${photo.url}" src="${photo.tUrl}" style="top: 0px;max-width: 100%" alt="${photo.photoName}" />
 							<span>${photo.photoName}</span>
 					</div>
 				</s:iterator>
@@ -125,7 +129,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 		<%@include  file="/bottom_tags.jsp"%>
 		<script type="text/javascript">
 			$(document).ready(function() {
@@ -135,6 +139,12 @@
 				});
 
 			});
+            var options = {
+                // inline: true,
+                url: 'data-original',
+
+            };
+            var viewer = new Viewer(document.getElementById('images'),options);
 		</script>
 		<a href="#" id="toTop" style="display: block;"> <span id="toTopHover"
 			style="opacity: 1;"> </span></a>

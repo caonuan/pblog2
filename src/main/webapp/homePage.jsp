@@ -199,14 +199,14 @@
 								<s:iterator value="photoList" id="photo" status="st">
 									<s:if test="#st.index==0">
 										<div class="carousel-item active" style="max-width: 100%; max-height: 100%">
-											<img alt="${photo.photoName }" src="${basic_url}${photo.url }"
+											<img alt="${photo.photoName }" src="${photo.getUrl() }"
 												style="max-width: 100%; max-height: 100%">
 											<div class="carousel-caption">${photo.photoName }</div>
 										</div>
 									</s:if>
 									<s:else>
 										<div class="carousel-item " style="max-width: 100%; max-height: 100%" align="center">
-											<img alt="${photo.photoName }" src="${basic_url}${photo.url }">
+											<img alt="${photo.photoName }" src="${photo.getUrl() }">
 											<div class="carousel-caption">${photo.photoName }</div>
 										</div>
 									</s:else>
@@ -224,8 +224,8 @@
 								</p>
 								<s:iterator value="photoMap.get(#album.albumId)" id="photo">
 									<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-										<a href="${basic_url}${photo.url }"> <img
-											src="${basic_url}${photo.url }" alt="Image" class="img-fluid tm-img">
+										<a href="${photo.getUrl() }"> <img
+											src="${photo.gettUrl() }" alt="Image" class="img-fluid tm-img">
 										</a>
 									</div>
 								</s:iterator>

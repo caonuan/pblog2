@@ -78,10 +78,12 @@ public class EmailSender {
         }
     }
 
-    public static void send_note_response(Visitor receiver,Visitor sender,int noteId){
+    public static void send_note_response(Visitor receiver,Visitor sender,Integer noteId){
         String pattern="^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+";
         if(Pattern.matches(pattern,receiver.getEmail())) {
-            String url = propertiesReader.basic_url + "note/showNote#" + noteId;
+            String url = propertiesReader.basic_url + "note/showNote";
+            if(noteId!=null)
+                url+="#"+noteId;
             String send_url = "<a href=\"" + url + "\">" + url + "</a>";
             String content = "\n" +
                     "<p>"+receiver.getName()+":</p>\n" +

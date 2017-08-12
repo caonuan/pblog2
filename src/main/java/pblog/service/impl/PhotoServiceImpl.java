@@ -141,7 +141,7 @@ public class PhotoServiceImpl implements PhotoService {
 		for (Album album : list) {
 			if (album.getAlbumUrl() == null || album.getAlbumUrl().equals("")) {
 				Photo selectphoto = getTopPhotoForAlbum(album.getAlbumId());
-				album.setAlbumUrl(selectphoto == null ? null : Util.get_t_url(selectphoto.getUrl()));
+				album.setAlbumUrl(selectphoto == null ? null : selectphoto.gettUrl());
 			}
 		}
 		return list;

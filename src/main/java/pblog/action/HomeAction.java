@@ -61,26 +61,9 @@ public class HomeAction extends BasicAction implements ServletRequestAware {
 			// 由于ckeditor自动保存的路径是绝对路径，这样项目名就被绝对路径去掉了，导致读不出图片，故去掉最前面的"/"
 			article.setContent(article.getContent().replaceAll("src=\"/", "src=\""));
 		}
-		for (Photo photo : photoList) {
-			photo.setUrl(
-					photo.getUrl().substring(0, photo.getUrl().lastIndexOf('.'))
-							+ "_t"
-							+ photo.getUrl().substring(
-									photo.getUrl().lastIndexOf('.'), photo.getUrl()
-											.length()));
-		}
 		photoMap = new HashMap<>();
 		for (Album album : albumlist) {
 			List<Photo> list = photoService.getTopThreePhoto(album.getAlbumId());
-			if (list != null)
-				for (Photo photo : list) {
-					photo.setUrl(photo.getUrl().substring(0,
-							photo.getUrl().lastIndexOf('.'))
-							+ "_t"
-							+ photo.getUrl().substring(
-									photo.getUrl().lastIndexOf('.'),
-									photo.getUrl().length()));
-				}
 			photoMap.put(album.getAlbumId(), list);
 		}
 		noteList = noteService.getAllNote();

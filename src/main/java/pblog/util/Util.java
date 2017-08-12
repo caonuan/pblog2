@@ -111,10 +111,18 @@ public class Util {
 
     public static String get_t_url(String url) {
         if (pr.open_aliyun_oss) {
-            return pr.aliyun_oss_path + url + pr.aliyun_image_process;
+            return url + pr.aliyun_image_process;
         } else {
-            return pr.basic_url + url.substring(0, url.lastIndexOf('.'))
+            return url.substring(0, url.lastIndexOf('.'))
                     + "_t" + url.substring(url.lastIndexOf('.'), url.length());
+        }
+    }
+
+    public static String get_image_url(String url){
+        if (pr.open_aliyun_oss) {
+            return pr.aliyun_oss_path + url;
+        } else {
+            return pr.basic_url + url;
         }
     }
 }
