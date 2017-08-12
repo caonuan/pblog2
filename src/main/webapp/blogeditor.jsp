@@ -16,7 +16,7 @@
 <script type="text/javascript" src="<%=basePath%>easyui/jquery.easyui.min.js"></script>
 </head>
 <body>
-	<form id="TextArea1" action="<%=basePath%>/editor/editorArticleResult" name="myform"
+	<form id="TextArea1" action="<%=basePath%>editorArticleResult" name="myform"
 		method="post">
 		标题 <input name="title" type="text" maxlength="50"
 			style="width: 800px; height: 25px" value="${title}" /><br /> 类型 <select
@@ -49,6 +49,7 @@
 				<option value="1" selected="selected">是</option>
 			</s:else>
 		</select>
+		<input type="submit" value="上传文章" />
 		<ckfinder:setupCKEditor editor="content" basePath="ckfinder/" />
 		<ckeditor:editor basePath="ckeditor/" editor="content" value="${content }" />
 		<input type="hidden" name="articleId" value="${articleId }"> <input

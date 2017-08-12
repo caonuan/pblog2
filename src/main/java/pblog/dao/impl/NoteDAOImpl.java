@@ -29,7 +29,7 @@ public class NoteDAOImpl implements NoteDAO {
 
 	@Override
 	public List<Note> getAllNote() {
-		List<Note> list = (List<Note>) hibernateTemplate.find("from pblog.entity.Note order by publishDate desc");
+		List<Note> list = (List<Note>) hibernateTemplate.find("from pblog.entity.Note where receiveNoteId is null order by publishDate desc");
 		return list;
 	}
 

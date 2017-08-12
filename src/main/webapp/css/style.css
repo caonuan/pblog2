@@ -758,6 +758,10 @@ p.your-para{
 	padding: 2em;
 	width: 95%;
 }
+.comments-area{
+	background: #FFFFFF;
+	margin-top: 1em;
+}
 /*----*/
 .comments-area h3{
 	font-size: 2em;

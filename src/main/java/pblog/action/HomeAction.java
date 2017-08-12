@@ -84,18 +84,7 @@ public class HomeAction extends BasicAction implements ServletRequestAware {
 			photoMap.put(album.getAlbumId(), list);
 		}
 		noteList = noteService.getAllNote();
-		visitorMap = new HashMap<>();
-		for (Note note : noteList) {
-			Visitor visitor = null;
-			if (!visitorMap.containsKey(note.getReceiveId())) {
-				visitor = visitorService.getVisitorById(note.getReceiveId());
-				visitorMap.put(note.getReceiveId(), visitor);
-			}
-			if (!visitorMap.containsKey(note.getVisitorId())) {
-				visitor = visitorService.getVisitorById(note.getVisitorId());
-				visitorMap.put(note.getVisitorId(), visitor);
-			}
-		}
+		visitorMap = noteService.getVisitorMapByNoteList(noteList);
 		visitor = (Visitor) session.getAttribute("visitor");
 		return super.execute();
 	}

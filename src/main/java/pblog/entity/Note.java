@@ -1,16 +1,9 @@
 package pblog.entity;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import org.hibernate.annotations.Cascade;
 import org.springframework.context.annotation.Scope;
@@ -28,6 +21,9 @@ public class Note {
 	private int visitorId; // �൱��sendId
 	private int receiveId;
 	private Visitor visitor;
+	private Visitor receiver;
+	private List<Note> receiveNoteList;
+	private Integer receiveNoteId;
 
 	public Note() {
 	}
@@ -101,4 +97,34 @@ public class Note {
 		this.visitor = visitor;
 	}
 
+	@ManyToOne
+	@Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+	@JoinColumn(name = "receiveId",insertable=false,updatable=false)
+	public Visitor getReceiver() {
+		return receiver;
+	}
+
+	public void setReceiver(Visitor receiver) {
+		this.receiver = receiver;
+	}
+
+	@OneToMany(targetEntity=Note.class, fetch = FetchType.EAGER)
+	@Cascade(value=org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+	@JoinColumn(name = "receiveNoteId",insertable=false,updatable=false)
+	public List<Note> getReceiveNoteList() {
+		return receiveNoteList;
+	}
+
+	public void setReceiveNoteList(List<Note> receiveNoteList) {
+		this.receiveNoteList = receiveNoteList;
+	}
+
+	@Column(name = "receiveNoteId",nullable = true)
+	public Integer getReceiveNoteId() {
+		return receiveNoteId;
+	}
+
+	public void setReceiveNoteId(Integer receiveNoteId) {
+		this.receiveNoteId = receiveNoteId;
+	}
 }

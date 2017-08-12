@@ -1,6 +1,8 @@
 package pblog.action;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -16,120 +18,147 @@ import pblog.entity.Note;
 import pblog.entity.Visitor;
 import pblog.service.NoteService;
 import pblog.service.VisitorService;
+
 @Controller
 @Scope("prototype")
 public class NoteAction extends BasicAction implements ServletRequestAware {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8218934505459563277L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -8218934505459563277L;
 
-	private String mac;
-	private int visitorId;
-	private String name;
-	private String email;
-	private String content;
-	private NoteService noteService;
-	private VisitorService visitorService;
-	private HttpSession session;
-	private List<Note> noteList;
+    private String mac;
+    private int visitorId;
+    private String name;
+    private String email;
+    private String content;
+    private NoteService noteService;
+    private VisitorService visitorService;
+    private HttpSession session;
+    private List<Note> noteList;
+    private Map<Integer, Visitor> visitorMap;
+    private Integer receiveNoteId;
+    private int receiveId;
 
-	public String addNote() {
-		Visitor visitor = (Visitor) session.getAttribute("visitor");
-		if (visitor == null) {
-			String ip = (String) session.getAttribute("ip");
-			visitorService.visitorRegister(name, email, ip);
-			visitor = visitorService.getVisitor(ip);
-			session.setAttribute("visitor", visitor);
-		}
-		noteService.addNote(content, visitor.getVisitorId(), 1);
-		return SUCCESS;
-	}
-	
-	@Override
-	public String execute(){
-		noteList=noteService.getAllNote();
-		return SUCCESS;
-	}
+    public String addNote() {
+        Visitor visitor = (Visitor) session.getAttribute("visitor");
+        if (visitor == null) {
+            String ip = (String) session.getAttribute("ip");
+            visitorService.visitorRegister(name, email, ip);
+            visitor = visitorService.getVisitor(ip);
+            session.setAttribute("visitor", visitor);
+        }
+        noteService.addNote(content, visitor.getVisitorId(), receiveId,receiveNoteId);
+        return SUCCESS;
+    }
 
-	public NoteService getNoteService() {
-		return noteService;
-	}
+    @Override
+    public String execute() {
+        noteList = noteService.getAllNote();
+        return SUCCESS;
+    }
 
-	@Resource
-	public void setNoteService(NoteService noteService) {
-		this.noteService = noteService;
-	}
+    public NoteService getNoteService() {
+        return noteService;
+    }
 
-	public VisitorService getVisitorService() {
-		return visitorService;
-	}
+    @Resource
+    public void setNoteService(NoteService noteService) {
+        this.noteService = noteService;
+    }
 
-	@Resource
-	public void setVisitorService(VisitorService visitorService) {
-		this.visitorService = visitorService;
-	}
+    public VisitorService getVisitorService() {
+        return visitorService;
+    }
 
-	public String getMac() {
-		return mac;
-	}
+    @Resource
+    public void setVisitorService(VisitorService visitorService) {
+        this.visitorService = visitorService;
+    }
 
-	public void setMac(String mac) {
-		this.mac = mac;
-	}
+    public String getMac() {
+        return mac;
+    }
 
-	public int getVisitorId() {
-		return visitorId;
-	}
+    public void setMac(String mac) {
+        this.mac = mac;
+    }
 
-	public void setVisitorId(int visitorId) {
-		this.visitorId = visitorId;
-	}
+    public int getVisitorId() {
+        return visitorId;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setVisitorId(int visitorId) {
+        this.visitorId = visitorId;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getContent() {
-		return content;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	public HttpSession getSession() {
-		return session;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-	public void setSession(HttpSession session) {
-		this.session = session;
-	}
+    public HttpSession getSession() {
+        return session;
+    }
 
-	@Override
-	public void setServletRequest(HttpServletRequest request) {
-		session = request.getSession();
-	}
+    public void setSession(HttpSession session) {
+        this.session = session;
+    }
 
-	public List<Note> getNoteList() {
-		return noteList;
-	}
+    @Override
+    public void setServletRequest(HttpServletRequest request) {
+        session = request.getSession();
+    }
 
-	public void setNoteList(List<Note> noteList) {
-		this.noteList = noteList;
-	}
-	
+    public List<Note> getNoteList() {
+        return noteList;
+    }
+
+    public void setNoteList(List<Note> noteList) {
+        this.noteList = noteList;
+    }
+
+    public Map<Integer, Visitor> getVisitorMap() {
+        return visitorMap;
+    }
+
+    public void setVisitorMap(Map<Integer, Visitor> visitorMap) {
+        this.visitorMap = visitorMap;
+    }
+
+    public Integer getReceiveNoteId() {
+        return receiveNoteId;
+    }
+
+    public void setReceiveNoteId(Integer receiveNoteId) {
+        this.receiveNoteId = receiveNoteId;
+    }
+
+    public int getReceiveId() {
+        return receiveId;
+    }
+
+    public void setReceiveId(int receiveId) {
+        this.receiveId = receiveId;
+    }
 }

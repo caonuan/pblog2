@@ -24,7 +24,7 @@
 <meta name="keywords"
 	content="" />
 <script type="application/x-javascript">
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 </script>
 <script type="text/javascript" src="<%=basePath%>js/move-top.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/easing.js"></script>
@@ -37,6 +37,23 @@
 			}, 1000);
 		});
 	});
+	
+	function reply(receiveNoteId,receiveNoteOwnerName,receiveId,receiverName) {
+        $("#receiverName").val(receiverName);
+        $("#receiveId").val(receiveId);
+        $("#receiveNoteId").val(receiveNoteId);
+        $("#receiveNoteOwnerName").val(receiveNoteOwnerName);
+        location.href = "#note_place";
+    }
+
+    function clear_form() {
+        $("#receiverName").val("我曹怒安本人");
+        $("#receiveId").val("1");
+        $("#receiveNoteId").val("");
+        $("#receiveNoteOwnerName").val("留言页");
+        $("#name").val("${visitor.name}");
+        $("#email").val("${visitor.email}");
+    }
 </script>
 
 </head>
@@ -99,35 +116,84 @@
 	<!---->
 	<div class="container">
 		<div class="contact">
-			<div class="col-md-7 contact-para">
+			<div class="comment-grid-top">
+				<h3>评论</h3>
+				<s:iterator value="noteList" id="note" status="status">
+					<div class="comments-top-top">
+						<div class="top-comment-left">
+							<img class="img-responsive" src="<%=basePath%>img/co.png" alt="" />
+						</div>
+						<div class="top-comment-right">
+							<ul>
+								<li><span class="left-at">
+										${note.visitor.name }</span></li>
+								<li><span class="right-at">${note.publishDate}</span></li>
+                                <li><a class="reply" onclick="reply(${note.noteId},'${note.visitor.name}',${note.visitor.visitorId},'${note.visitor.name}')"
+                                       href="javascript:void(0)">REPLY</a>
+							</ul>
+							<p style="color: #4F4F4F;">${note.content }</p>
+                            <s:iterator value="#note.receiveNoteList" id="receiveNote" status="status">
+                                <div class="comments-area ">
+                                    <div class="top-comment-right">
+                                        <ul>
+                                            <li><span class="left-at"> ${receiveNote.visitor.name} 回复 ${receiveNote.receiver.name}</span></li>
+                                            <li><span class="right-at">${receiveNote.publishDate}</span></li>
+                                            <li><a class="reply" onclick="reply(${note.noteId},'${note.visitor.name}',${receiveNote.visitor.visitorId},'${receiveNote.visitor.name}')"
+                                                   href="javascript:void(0)">REPLY</a>
+                                            </li>
+                                        </ul>
+                                        <p>${receiveNote.content}</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </s:iterator>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</s:iterator>
+				<hr style="margin-bottom:0px">
+				<hr style="margin-top:0px">
+			</div>
+			<div class="col-md-7 contact-para" id="note_place">
 				<p class="class-para">请填写相关信息</p>
 				<h5>留言</h5>
-				<form>
+				<form action="<%=basePath%>note/addNote" method="post">
 					<div class="grid-contact">
 						<div class="col-md-6 contact-grid">
 							<p>NAME</p>
-							<input type="text" value="" onfocus="this.value='';"
-								onblur="if (this.value == '') {this.value ='';}">
+							<input id="name" name="name" type="text" value="${visitor.name }" onfocus="this.value='';"
+								onblur="if (this.value == '') {this.value ='${visitor.name }';}">
 						</div>
+                        <div class="col-md-6 contact-grid">
+                            <p>在谁的评论下回复：</p>
+                            <input id="receiveNoteOwnerName" type="text" value="留言页" readonly style="color: #BDBDBD;">
+                            <input id="receiveNoteId" type ="hidden" name="receiveNoteId" value="">
+                        </div>
 						<div class="clearfix"></div>
 					</div>
 					<div class="grid-contact">
 						<div class="col-md-6 contact-grid">
 							<p>E-MAIL ADDRESS</p>
-							<input type="text" value="" onfocus="this.value='';"
-								onblur="if (this.value == '') {this.value ='';}">
+							<input id="email" name="email" type="text" value="${visitor.email }" onfocus="this.value='';"
+								onblur="if (this.value == '') {this.value ='${visitor.email }';}">
 						</div>
+                        <div class="col-md-6 contact-grid">
+                            <p>回复给谁：</p>
+                            <input id="receiverName" name="receiverName" type="text" value="我曹怒安本人" readonly style="color: #BDBDBD;">
+                            <input id="receiveId" type="hidden" name="receiveId" value="1">
+                        </div>
 						<div class="clearfix"></div>
 					</div>
 					<p class="your-para">MESSAGE</p>
-					<textarea cols="77" rows="6" value=" " onfocus="this.value='';"
+					<textarea name="content" cols="77" rows="6" value=" " onfocus="this.value='';"
 						onblur="if (this.value == '') {this.value = '';}"></textarea>
 					<div class="send">
 						<input type="submit" value="提交留言">
+                        <button type="button" onclick="javascript:clear_form()">清除</button>
 					</div>
 				</form>
 			</div>
-			<div class="col-md-5 contact-map">
+		<!--	<div class="col-md-5 contact-map">
 				<h5>GOOGLE-MAP</h5>
 				<div class="map">
 					<iframe
@@ -135,6 +201,7 @@
 
 				</div>
 			</div>
+		-->
 			<div class="clearfix"></div>
 		</div>
 	</div>

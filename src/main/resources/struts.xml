@@ -182,6 +182,12 @@
 		<action name="showNote" class="pblog.action.NoteAction">
 			<result>/note/note.jsp</result>
 		</action>
+		<action name="addNote" class="pblog.action.NoteAction" method="addNote">
+			<result type="redirectAction">
+				<param name="namespace">/note</param>
+				<param name="actionName">/showNote</param>
+			</result>
+		</action>
 	</package>
 
 	<package name="default" namespace="/" extends="struts-default">
@@ -218,12 +224,4 @@
 		</action>
 	</package>
 
-	<package name="note" namespace="/note" extends="struts-default">
-		<action name="addNote" class="pblog.action.NoteAction" method="addNote">
-			<result type="redirectAction">
-				<param name="namespace">/</param>
-				<param name="actionName">home</param>
-			</result>
-		</action>
-	</package>
 </struts>

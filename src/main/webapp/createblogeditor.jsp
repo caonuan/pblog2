@@ -27,6 +27,7 @@
 			<option value="0" selected="selected">否</option>
 			<option value="1">是</option>
 		</select>
+		<input type="submit" value="上传文章" />
 		<ckfinder:setupCKEditor editor="content" basePath="ckfinder/" />
 		<ckeditor:editor basePath="ckeditor/" editor="content" />
 		<input type="submit" value="上传文章" />
