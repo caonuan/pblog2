@@ -24,7 +24,7 @@
 <meta name="keywords"
 	content="" />
 <script type="application/x-javascript">
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+	 addEventListener("load", function() { setTimeout(to_maodian, 0); }, false);
 </script>
 <script type="text/javascript" src="<%=basePath%>js/move-top.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/easing.js"></script>
@@ -56,8 +56,16 @@
     }
 
     function turn_to_note_place(){
+	    clear_form();
         location.href = "#note_place";
     }
+
+    function to_maodian() {
+        div_id = location.hash.substr(1);
+        document.getElementById(div_id).scrollIntoView();
+    }
+
+    function hideURLbar(){ window.scrollTo(0,1); }
 </script>
 
 </head>
