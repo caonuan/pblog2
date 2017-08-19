@@ -19,21 +19,21 @@
 			<interceptor name="managerLoginInterceptor" class="pblog.util.ManagerLoginInterceptor"></interceptor>
 			<interceptor-stack name="managerInterceptors">
 				<interceptor-ref name="defaultStack"></interceptor-ref>
-				<interceptor-ref name="cookie">
-					<!--cookieName=*时接受所有cookie-->
-					<param name="cookiesName">*</param>
-					<param name="cookiesValue">*</param>
-				</interceptor-ref>
+				<!--<interceptor-ref name="cookie">-->
+					<!--&lt;!&ndash;cookieName=*时接受所有cookie&ndash;&gt;-->
+					<!--<param name="cookiesName">*</param>-->
+					<!--<param name="cookiesValue">*</param>-->
+				<!--</interceptor-ref>-->
 				<interceptor-ref name="managerLoginInterceptor"></interceptor-ref>
 			</interceptor-stack>
 			<interceptor name="visitorLoginInterceptor" class="pblog.util.VisitorLoginInterceptor"></interceptor>
 			<interceptor-stack name="visitorInterceptors">
 				<interceptor-ref name="defaultStack"></interceptor-ref>
-				<interceptor-ref name="cookie">
-					<!--cookieName=*时接受所有cookie-->
-					<param name="cookiesName">*</param>
-					<param name="cookiesValue">*</param>
-				</interceptor-ref>
+				<!--<interceptor-ref name="cookie">-->
+					<!--&lt;!&ndash;cookieName=*时接受所有cookie&ndash;&gt;-->
+					<!--<param name="cookiesName">*</param>-->
+					<!--<param name="cookiesValue">*</param>-->
+				<!--</interceptor-ref>-->
 				<interceptor-ref name="visitorLoginInterceptor"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
