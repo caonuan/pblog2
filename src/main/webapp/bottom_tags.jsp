@@ -57,7 +57,7 @@
 						<li><a href="http://lisasuosuo.cn/" target="_blank">suosuo</a></li>
 						<li><a href="http://115.159.63.191/" target="_blank">柒蓝</a></li>
 						<li><a href="http://www.dlifep.com/" target="_blank">aheadlead的生活博客</a></li>
-						<li><a href="https://www.rapospectre.com/" target="_blank">RaPoSpectre的个人博客</a></li>
+						<li><a href="https://www.rapospectre.com/" target="_blank">RaPoSpectre的技术博客</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>

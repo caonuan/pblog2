@@ -1,19 +1,22 @@
 package pblog.action;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
+import com.sun.deploy.net.HttpResponse;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import pblog.service.ManagerService;
+import pblog.util.Util;
+
 @Controller
 @Scope("prototype")
-public class ManagerAction extends BasicAction implements ServletRequestAware{
+public class ManagerAction extends BasicAction implements ServletRequestAware,ServletResponseAware {
 	/**
 	 * 
 	 */
@@ -23,6 +26,7 @@ public class ManagerAction extends BasicAction implements ServletRequestAware{
 	private ManagerService managerService;
 	
 	private HttpSession session;
+	private HttpServletResponse response;
 
 	@Override
 	public String execute() throws Exception {
@@ -32,6 +36,8 @@ public class ManagerAction extends BasicAction implements ServletRequestAware{
 		String iflogin=managerService.managerLogin(username,password);
 		if(iflogin.equals("success")){
 			session.setAttribute("manager", username);
+			Cookie cookie = Util.makeCookie("manager", username);
+			response.addCookie(cookie);
 		}
 		return iflogin;
 	}
@@ -65,4 +71,8 @@ public class ManagerAction extends BasicAction implements ServletRequestAware{
 		session=arg0.getSession();
 	}
 
+	@Override
+	public void setServletResponse(HttpServletResponse httpServletResponse) {
+		response=httpServletResponse;
+	}
 }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import net.sf.json.JSONObject;
@@ -124,5 +125,11 @@ public class Util {
         } else {
             return pr.basic_url + url;
         }
+    }
+
+    public static Cookie makeCookie(String name,String value){
+        Cookie cookie = new Cookie(name,value);
+        cookie.setMaxAge(60 * 60 * 24 * 30 * 24);// cookie保存两年
+        return cookie;
     }
 }
