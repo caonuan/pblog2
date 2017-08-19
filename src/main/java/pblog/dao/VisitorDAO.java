@@ -1,12 +1,8 @@
 package pblog.dao;
 
-import java.util.List;
+import pblog.entity.*;
 
-import pblog.entity.AlbumReply;
-import pblog.entity.ArticleReply;
-import pblog.entity.IPInfo;
-import pblog.entity.Visit;
-import pblog.entity.Visitor;
+import java.util.List;
 
 public interface VisitorDAO {
 	public boolean addVisitor(Visitor visitor) throws Exception;

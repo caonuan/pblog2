@@ -1,8 +1,8 @@
 package pblog.dao;
 
-import java.util.List;
-
 import pblog.entity.ArticleReply;
+
+import java.util.List;
 
 public interface ArticleReplyDAO {
 	/**

@@ -1,24 +1,19 @@
 package pblog.action;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
-import com.opensymphony.xwork2.ActionSupport;
-
 import pblog.entity.Note;
 import pblog.entity.Visitor;
 import pblog.service.NoteService;
 import pblog.service.VisitorService;
 import pblog.util.EmailSender;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @Scope("prototype")

@@ -1,21 +1,17 @@
 package pblog.action;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
-import com.opensymphony.xwork2.ActionSupport;
-
 import pblog.entity.Article;
 import pblog.entity.BlogClass;
 import pblog.service.ArticleService;
 import pblog.service.SearchService;
 import pblog.util.HtmlParser;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * 获得博文列表的action

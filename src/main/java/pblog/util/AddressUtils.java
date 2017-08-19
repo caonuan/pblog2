@@ -1,17 +1,13 @@
 package pblog.util;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import net.sf.json.JSONObject;
+import pblog.entity.IPInfo;
+
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-
-import net.sf.json.JSONObject;
-import pblog.entity.IPInfo;
 
 /**
  * 根据IP地址获取详细的地域信息 淘宝API :

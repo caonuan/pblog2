@@ -1,19 +1,14 @@
 package pblog.dao.impl;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
-
 import pblog.dao.VisitorDAO;
-import pblog.entity.AlbumReply;
-import pblog.entity.ArticleReply;
-import pblog.entity.IPInfo;
-import pblog.entity.Visit;
-import pblog.entity.Visitor;
+import pblog.entity.*;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component("visitorDAO")
 public class VisitorDAOImpl implements VisitorDAO {

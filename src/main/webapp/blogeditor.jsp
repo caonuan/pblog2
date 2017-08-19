@@ -1,5 +1,4 @@
-<%@page import="pblog.entity.BlogClass"%>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://cksource.com/ckfinder" prefix="ckfinder"%>
 <%@ taglib uri="http://ckeditor.com" prefix="ckeditor"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>

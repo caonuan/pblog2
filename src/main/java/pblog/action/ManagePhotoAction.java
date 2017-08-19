@@ -1,30 +1,20 @@
 package pblog.action;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
-import com.opensymphony.xwork2.ActionSupport;
-
 import pblog.entity.Album;
 import pblog.service.PhotoService;
 import pblog.util.AffineTransImage;
 import pblog.util.PropertiesReader;
 import pblog.util.SingleApplicationContext;
+
+import javax.annotation.Resource;
+import java.io.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @Scope("prototype")

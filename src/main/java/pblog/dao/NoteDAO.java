@@ -1,8 +1,8 @@
 package pblog.dao;
 
-import java.util.List;
-
 import pblog.entity.Note;
+
+import java.util.List;
 
 public interface NoteDAO {
 	/**

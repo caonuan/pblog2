@@ -1,17 +1,12 @@
 package pblog.action;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-import javax.persistence.Basic;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
-import com.opensymphony.xwork2.ActionSupport;
-
 import pblog.entity.Photo;
 import pblog.service.PhotoService;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 @Controller
 @Scope("prototype")

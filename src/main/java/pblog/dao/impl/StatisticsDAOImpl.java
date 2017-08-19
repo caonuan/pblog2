@@ -3,7 +3,6 @@ package pblog.dao.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
-
 import pblog.dao.StatisticsDAO;
 import pblog.entity.Statistics;
 

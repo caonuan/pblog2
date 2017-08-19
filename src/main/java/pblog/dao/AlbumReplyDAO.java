@@ -1,8 +1,8 @@
 package pblog.dao;
 
-import java.util.List;
-
 import pblog.entity.AlbumReply;
+
+import java.util.List;
 
 public interface AlbumReplyDAO {
 	/**

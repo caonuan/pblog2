@@ -1,17 +1,8 @@
 package pblog.action;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
-import com.opensymphony.xwork2.ActionSupport;
-
 import pblog.entity.Article;
 import pblog.entity.ArticleReply;
 import pblog.entity.BlogClass;
@@ -19,6 +10,11 @@ import pblog.entity.Visitor;
 import pblog.service.ArticleService;
 import pblog.service.ReplyService;
 import pblog.service.VisitorService;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * 查看具体文章的action

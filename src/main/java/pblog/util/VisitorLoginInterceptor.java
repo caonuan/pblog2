@@ -1,24 +1,21 @@
 package pblog.util;
 
-import java.util.Date;
-import java.util.Map;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.struts2.StrutsStatics;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
-
 import net.sf.json.JSONObject;
+import org.apache.struts2.StrutsStatics;
+import org.springframework.beans.factory.annotation.Autowired;
 import pblog.entity.IPInfo;
 import pblog.entity.Visit;
 import pblog.entity.Visitor;
 import pblog.service.VisitorService;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
+import java.util.Map;
 
 public class VisitorLoginInterceptor extends AbstractInterceptor {
 

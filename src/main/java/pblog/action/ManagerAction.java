@@ -1,18 +1,17 @@
 package pblog.action;
 
-import javax.annotation.Resource;
-import javax.servlet.http.*;
-
-import com.sun.deploy.net.HttpResponse;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
-import com.opensymphony.xwork2.ActionSupport;
-
 import pblog.service.ManagerService;
 import pblog.util.Util;
+
+import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @Scope("prototype")

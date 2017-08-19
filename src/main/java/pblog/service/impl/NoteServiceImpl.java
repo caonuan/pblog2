@@ -1,20 +1,17 @@
 package pblog.service.impl;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import pblog.dao.NoteDAO;
 import pblog.entity.Note;
 import pblog.entity.Visitor;
 import pblog.service.NoteService;
 import pblog.service.VisitorService;
+
+import javax.annotation.Resource;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service("noteService")
 public  class NoteServiceImpl implements NoteService{

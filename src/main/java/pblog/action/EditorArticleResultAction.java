@@ -1,13 +1,10 @@
 package pblog.action;
 
-import javax.annotation.Resource;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
-import com.opensymphony.xwork2.ActionSupport;
-
 import pblog.service.ArticleService;
+
+import javax.annotation.Resource;
 
 @Controller
 @Scope("prototype")

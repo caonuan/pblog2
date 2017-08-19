@@ -1,14 +1,13 @@
 package pblog.dao.impl;
 
-import java.io.Serializable;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
-
 import pblog.dao.AlbumReplyDAO;
 import pblog.entity.AlbumReply;
+
+import java.io.Serializable;
+import java.util.List;
 
 @Component("albumReplyDAO")
 public class AlbumReplyDAOImpl implements AlbumReplyDAO {

@@ -1,6 +1,5 @@
 package pblog.util;
 
-import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 

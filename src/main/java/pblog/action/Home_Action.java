@@ -1,16 +1,13 @@
 package pblog.action;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import com.opensymphony.xwork2.ActionSupport;
-
 import pblog.entity.Album;
 import pblog.entity.Article;
 import pblog.entity.Photo;
 import pblog.service.ArticleService;
 import pblog.service.PhotoService;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 
 public class Home_Action extends BasicAction {

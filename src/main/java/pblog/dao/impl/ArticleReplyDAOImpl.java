@@ -1,14 +1,13 @@
 package pblog.dao.impl;
 
-import java.io.Serializable;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
-
 import pblog.dao.ArticleReplyDAO;
 import pblog.entity.ArticleReply;
+
+import java.io.Serializable;
+import java.util.List;
 @Component("articleReplyDAO")
 public class ArticleReplyDAOImpl implements ArticleReplyDAO {
 	@Autowired

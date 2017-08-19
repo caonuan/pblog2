@@ -1,9 +1,9 @@
 package pblog.service;
 
-import java.util.List;
-
 import pblog.entity.AlbumReply;
 import pblog.entity.ArticleReply;
+
+import java.util.List;
 
 public interface ReplyService {
 	/**

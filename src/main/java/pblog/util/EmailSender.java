@@ -1,18 +1,13 @@
 package pblog.util;
 
-import org.springframework.stereotype.Component;
-import pblog.entity.Visit;
 import pblog.entity.Visitor;
 
-import javax.annotation.Resource;
 import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;

@@ -1,13 +1,12 @@
 package pblog.dao.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
-
 import pblog.dao.NoteDAO;
 import pblog.entity.Note;
+
+import java.util.List;
 
 @Component("noteDAO")
 public class NoteDAOImpl implements NoteDAO {

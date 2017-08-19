@@ -1,14 +1,7 @@
 package pblog.service.impl;
 
-import java.io.IOException;
-import java.util.Date;
-import java.util.List;
-
-import javax.annotation.Resource;
-
 import org.apache.struts2.ServletActionContext;
 import org.springframework.stereotype.Service;
-
 import pblog.dao.AlbumDAO;
 import pblog.dao.PhotoDAO;
 import pblog.entity.Album;
@@ -16,6 +9,11 @@ import pblog.entity.Photo;
 import pblog.service.PhotoService;
 import pblog.util.SingleApplicationContext;
 import pblog.util.Util;
+
+import javax.annotation.Resource;
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 
 @Service("photoService")
 public class PhotoServiceImpl implements PhotoService {

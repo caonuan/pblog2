@@ -1,9 +1,9 @@
 package pblog.dao;
 
-import java.util.List;
-
 import pblog.entity.Album;
 import pblog.entity.Photo;
+
+import java.util.List;
 
 public interface AlbumDAO {
 

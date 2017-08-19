@@ -1,18 +1,15 @@
 package pblog.action;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import pblog.dao.impl.SQLQuery;
+
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
-
-import com.opensymphony.xwork2.ActionSupport;
-
-import pblog.dao.impl.SQLQuery;
 @Controller
 @Scope("prototype")
 public class QueryDatabaseAction extends BasicAction {

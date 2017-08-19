@@ -1,18 +1,12 @@
 package pblog.service.impl;
 
-import java.util.List;
+import org.springframework.stereotype.Service;
+import pblog.dao.VisitorDAO;
+import pblog.entity.*;
+import pblog.service.VisitorService;
 
 import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-
-import pblog.dao.VisitorDAO;
-import pblog.entity.AlbumReply;
-import pblog.entity.ArticleReply;
-import pblog.entity.IPInfo;
-import pblog.entity.Visit;
-import pblog.entity.Visitor;
-import pblog.service.VisitorService;
+import java.util.List;
 
 @Service("visitorService")
 public class VisitorServiceImpl implements VisitorService {

@@ -1,13 +1,12 @@
 package pblog.entity;
 
-import java.util.Date;
-import java.util.List;
-
-import javax.persistence.*;
-
 import org.hibernate.annotations.Cascade;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 @Component
 @Scope("prototype")

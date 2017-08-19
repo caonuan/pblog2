@@ -1,8 +1,8 @@
 package pblog.dao;
 
-import java.util.List;
-
 import pblog.entity.Photo;
+
+import java.util.List;
 
 public interface PhotoDAO {
 	public boolean addPhoto(Photo photo);

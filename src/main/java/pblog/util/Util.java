@@ -1,15 +1,13 @@
 package pblog.util;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
+import net.sf.json.JSONObject;
+import pblog.entity.IPInfo;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-
-import net.sf.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import pblog.entity.IPInfo;
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 
 public class Util {
     private static PropertiesReader pr=(PropertiesReader) SingleApplicationContext.getApplicationContext().getBean("propertiesReader");

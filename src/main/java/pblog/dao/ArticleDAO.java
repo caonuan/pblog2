@@ -1,9 +1,9 @@
 package pblog.dao;
 
-import java.util.List;
-
 import pblog.entity.Article;
 import pblog.entity.BlogClass;
+
+import java.util.List;
 
 public interface ArticleDAO {
 	/**

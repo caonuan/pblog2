@@ -1,20 +1,13 @@
 package pblog.util;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Map;
-import java.util.Properties;
-
 import com.opensymphony.xwork2.ActionContext;
-import org.apache.struts2.ServletActionContext;
-
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import org.apache.struts2.StrutsStatics;
-import org.apache.struts2.interceptor.CookiesAware;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 public class ManagerLoginInterceptor extends AbstractInterceptor{
 
