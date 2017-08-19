@@ -98,7 +98,7 @@
 			<!---->
 			<div class="header-bottom">
 				<div class="top-nav">
-					<span class="menu"> </span>
+					<span class="menu">目录<span class="glyphicon glyphicon-chevron-down" style="text-align: right"></span></span>
 					<ul>
 						<li><a href="<%=basePath%>${home_page}" data-hover="主页">主页</a></li>
 						<li><a href="<%=basePath%>${article_page}" data-hover="博客">博客</a></li>

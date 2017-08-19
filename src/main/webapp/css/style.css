@@ -130,6 +130,10 @@ ul.social-in li  i.youtube:hover{
 }
 /*--responsive media-quries--*/
 @media(max-width:768px){
+.top-nav{
+	width: 50%;
+	background: #F2F2F2;
+}
 .top-nav ul{
 	display: none;
 	position:absolute;
@@ -143,10 +147,13 @@ ul.social-in li  i.youtube:hover{
 .top-nav span.menu {
 	display: block;
 	width: 100%;
-	width: 100%;
 	position: relative;
-	text-align: center;
-	height: 30px;
+	height: 25px;
+	margin-top: 5px;
+	font-size: 1em;
+}
+.top-nav span.glyphicon-chevron-down {
+	float: right;
 }
 .top-nav ul li,.top-nav ul li.active{
 	display: block;
@@ -1198,7 +1205,7 @@ a.logo-bottom {
 	padding: 0em 0.5em;
 }
 .event-in:hover span.rollover1 {
-	width: 86%;
+	width: 92%;
 }
 .event-in:nth-child(9) {
 	display:none;

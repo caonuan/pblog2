@@ -14,14 +14,28 @@
 	<constant name="struts.action.excludePattern" value="/ckeditor/.*,/ckfinder/.*" />
 	<constant name="struts.multipart.maxSize" value="524288000" />
 
-	<package name="manage" namespace="/manage" extends="struts-default">
+	<package name="basic-package" extends="struts-default">
 		<interceptors>
 			<interceptor name="managerLoginInterceptor" class="pblog.util.ManagerLoginInterceptor"></interceptor>
 			<interceptor-stack name="managerInterceptors">
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 				<interceptor-ref name="managerLoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="cookie">
+					<!--cookieName=*时接受所有cookie-->
+					<param name="cookiesName">manager</param>
+					<param name="cookiesValue">*</param>
+				</interceptor-ref>
+			</interceptor-stack>
+			<interceptor name="visitorLoginInterceptor" class="pblog.util.VisitorLoginInterceptor"></interceptor>
+			<interceptor-stack name="visitorInterceptors">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="visitorLoginInterceptor"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
+		
+	</package>
+
+	<package name="manage" namespace="/manage" extends="basic-package">
 		<default-action-ref name="default"></default-action-ref>
 		<global-results>
 			<result name="login">login.jsp</result>
@@ -69,7 +83,7 @@
 		</action>
 	</package>
 
-	<package name="editor" namespace="/" extends="struts-default">
+	<package name="editor" namespace="/" extends="basic-package">
 		<action name="addArticleResult" class="pblog.action.EditorArticleResultAction"
 			method="addArticle">
 			<result>/cksource/success.jsp</result>
@@ -104,14 +118,7 @@
 		</action>
 	</package>
 
-	<package name="article" namespace="/article" extends="struts-default">
-		<interceptors>
-			<interceptor name="visitorLoginInterceptor" class="pblog.util.VisitorLoginInterceptor"></interceptor>
-			<interceptor-stack name="visitorInterceptors">
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-				<interceptor-ref name="visitorLoginInterceptor"></interceptor-ref>
-			</interceptor-stack>
-		</interceptors>
+	<package name="article" namespace="/article" extends="basic-package">
 		<default-interceptor-ref name="visitorInterceptors"></default-interceptor-ref>
 		<default-action-ref name="default"></default-action-ref>
 		<action name="default" class="com.opensymphony.xwork2.ActionSupport">
@@ -145,14 +152,7 @@
 		</action>
 	</package>
 	
-	<package name="album" namespace="/album" extends="struts-default">
-		<interceptors>
-			<interceptor name="visitorLoginInterceptor" class="pblog.util.VisitorLoginInterceptor"></interceptor>
-			<interceptor-stack name="visitorInterceptors">
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-				<interceptor-ref name="visitorLoginInterceptor"></interceptor-ref>
-			</interceptor-stack>
-		</interceptors>
+	<package name="album" namespace="/album" extends="basic-package">
 		<default-interceptor-ref name="visitorInterceptors"></default-interceptor-ref>
 		<default-action-ref name="default"></default-action-ref>
 		<action name="default" class="com.opensymphony.xwork2.ActionSupport">
@@ -163,14 +163,7 @@
 		</action>
 	</package>
 	
-	<package name="note" namespace="/note" extends="struts-default">
-		<interceptors>
-			<interceptor name="visitorLoginInterceptor" class="pblog.util.VisitorLoginInterceptor"></interceptor>
-			<interceptor-stack name="visitorInterceptors">
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-				<interceptor-ref name="visitorLoginInterceptor"></interceptor-ref>
-			</interceptor-stack>
-		</interceptors>
+	<package name="note" namespace="/note" extends="basic-package">
 		<default-interceptor-ref name="visitorInterceptors"></default-interceptor-ref>
 		<default-action-ref name="default"></default-action-ref>
 		<action name="default" class="com.opensymphony.xwork2.ActionSupport">
@@ -190,14 +183,7 @@
 		</action>
 	</package>
 
-	<package name="default" namespace="/" extends="struts-default">
-		<interceptors>
-			<interceptor name="visitorLoginInterceptor" class="pblog.util.VisitorLoginInterceptor"></interceptor>
-			<interceptor-stack name="visitorInterceptors">
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-				<interceptor-ref name="visitorLoginInterceptor"></interceptor-ref>
-			</interceptor-stack>
-		</interceptors>
+	<package name="default" namespace="/" extends="basic-package">
 		<default-interceptor-ref name="visitorLoginInterceptor"></default-interceptor-ref>
 		<default-action-ref name="articleHome"></default-action-ref>
 		<!-- <action name="*_*" class="pblog.action.{1}_Action" method="{2}"> <result>/index2.jsp</result> 
