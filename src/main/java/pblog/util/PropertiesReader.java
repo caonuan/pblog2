@@ -21,6 +21,10 @@ public class PropertiesReader {
     public final boolean open_aliyun_oss;
     public final String aliyun_oss_path;
     public final String aliyun_image_process;
+    public final String endpoint;
+    public final String accessKeyId;
+    public final String accessKeySecret;
+    public final String bucketName;
     public final Properties prop;
     public final String email_um;
     public final String email_pw;
@@ -45,5 +49,9 @@ public class PropertiesReader {
         email_pw = prop.getProperty("email_pw");
         email_addr = prop.getProperty("email_addr");
         email_send_name = prop.getProperty("email_send_name");
+        accessKeyId = prop.getProperty("accessKeyId");
+        accessKeySecret = prop.getProperty("accessKeySecret");
+        bucketName = prop.getProperty("bucketName");
+        endpoint = prop.getProperty("endpoint");
     }
 }

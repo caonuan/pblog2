@@ -3,3 +3,5 @@ pblog2.iml
 target/
 cpts_138_elw/
 model_web/
+src/main/resources/beans.xml
+src/main/resources/information.properties

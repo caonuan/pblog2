@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd  
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="pblog"></context:component-scan>
+	<aop:config></aop:config>
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	<bean
+		class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+
+	<bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://xx.xx.xx.xx:3306/pblog?useSSL=true"></property>
+		<property name="username" value="xxxx" />
+		<property name="password" value="xxxxx" />
+		<!-- 数据库连接池保持的最小连接数 -->
+		<property name="minIdle" value="5" />
+		<!-- 数据库连接池保持的最大连接数 -->
+		<property name="maxIdle" value="30" />
+		<!-- 当数据库连接因为某种原因断掉之后，再重新从连接池中拿另外一个连接时实际上这个连接可能 已经无效，所以为了确保所拿到的连接全都有效需要在获取连接，返回连接以及连接空闲时进行 
+			有效性验证 下面3个设置为ture时进行验证，默认为false -->
+		<!-- 取得连接时是否进行有效性验证 -->
+		<property name="testOnBorrow" value="true" />
+		<!-- 返回连接时是否进行有效性验证 -->
+		<property name="testOnReturn" value="true" />
+		<!-- 连接空闲时是否进行有效性验证 -->
+		<property name="testWhileIdle" value="true" />
+
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="datasource" />
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+		<!-- 带注解的类 -->
+		<property name="packagesToScan" value="pblog.entity"></property>
+	</bean>
+	
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<aop:config>
+		<aop:pointcut id="txMethod"
+			expression="execution(* pblog.dao.impl.*DAOImpl.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txMethod" />
+	</aop:config>
+	<!-- AOP切面声明事务管理 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" /> <!-- 支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式 -->
+			<tx:method name="update*" propagation="REQUIRED" /><!-- 支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式 -->
+			<tx:method name="add*" propagation="REQUIRED" /><!-- 支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式 -->
+			<tx:method name="create*" propagation="REQUIRED" /><!-- 支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式 -->
+			<tx:method name="delete*" propagation="REQUIRED" /><!-- 支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式 -->
+			<tx:method name="find*" propagation="SUPPORTS" read-only="true" /> <!-- 支持当前事务，如果当前没有事务，就以非事务方式执行。只读 -->
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true" /><!-- 支持当前事务，如果当前没有事务，就以非事务方式执行。只读 -->
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+		<constructor-arg ref="sessionFactory"></constructor-arg>
+	</bean>
+	
+</beans>  
