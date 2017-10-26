@@ -1,21 +1,18 @@
 package pblog.othertest;
 
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import pblog.service.ArticleService;
+import pblog.util.SingleApplicationContext;
+import pblog.util.Util;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import pblog.action.BasicAction;
-import pblog.service.ArticleService;
-import pblog.util.PropertiesReader;
-import pblog.util.SingleApplicationContext;
-import pblog.util.Util;
 
 public class Test1 {
 
@@ -138,5 +135,16 @@ public class Test1 {
 	public void stringTest(){
 		String content="123"+":\n\t您好，您收到了来自\t"+"312"+"\t的新回复。\n\t请访问：\t"+"http:1234"+"\t查看详情。";
 		System.out.println(content);
+	}
+
+	public static void main(String[] args) {
+		overflow1();
+	}
+
+	public static void overflow1(){
+		overflow2();
+	}
+	public static void overflow2(){
+		overflow1();
 	}
 }
