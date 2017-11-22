@@ -55,7 +55,7 @@
 						<li><a href="https://zrstea.com/" target="_blank">ZRStea</a></li>
 						<li><a href="https://akinoheya.com/" target="_blank">Akiの部屋</a></li>
 						<li><a href="http://lisasuosuo.cn/" target="_blank">suosuo</a></li>
-						<li><a href="http://115.159.63.191/" target="_blank">柒蓝</a></li>
+						<li><a href="http://os7blue.com" target="_blank">柒蓝</a></li>
 						<li><a href="http://www.dlifep.com/" target="_blank">aheadlead的生活博客</a></li>
 						<li><a href="https://www.rapospectre.com/" target="_blank">RaPoSpectre的技术博客</a></li>
 						<li><a href="https://blog.yichyaqc.cn/" target="_blank">yichyaqc的技术博客</a></li>

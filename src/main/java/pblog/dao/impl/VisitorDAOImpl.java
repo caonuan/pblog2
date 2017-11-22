@@ -70,12 +70,16 @@ public class VisitorDAOImpl implements VisitorDAO {
 	}
 	
 	@Override
-	public boolean saveVisitInfo(Visit visit) {
-		Serializable s = hibernateTemplate.save(visit);
-		if (s != null)
-			return true;
-		return false;
-	}
+    public boolean saveVisitInfo(Visit visit) {
+        try {
+            Serializable s = hibernateTemplate.save(visit);
+            if (s != null)
+                return true;
+        } catch (Exception ex) {
+            ;
+        }
+        return false;
+    }
 	
 	@Override
 	public IPInfo getIPInfoByIP(String ip) {
